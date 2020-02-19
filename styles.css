@@ -1,20 +1,23 @@
-
 body {
     margin: 30px;
     text-align: left;
     /* background-color: rgb(58, 61, 228); */
     background-color: #061922;
+    /* background-color: black; */
 }
 
 a {
     color: #fefe00;
 }
+
 .container {
     position: absolute;
     left: 10%;
-    right:10%;
-    
+    right: 10%;
+
 }
+
+/* 
 .resume {
     cursor: pointer;
     width: 100%;
@@ -25,7 +28,7 @@ a {
     transition: 0.0s;
     font-family: "Courier";
 
-}
+} */
 
 h1 {
     color: #fff;
@@ -38,20 +41,25 @@ h1 {
     animation: type 4s steps(60, end);
 }
 
-.veg{
-    color: lime;  
+.veg {
+    color: lime;
 }
 
-.nveg{
+.nveg {
+
     color: red;
 }
 
-h2,h3,
+
+h2,
+h3,
 .typing1,
 .typing2,
 .typing3,
 .typing4,
-.typing5{
+.typing5,
+.typing6,
+.typing7 {
     color: rgb(207, 197, 199);
     font-family: "Courier";
     font-size: 19px;
@@ -65,32 +73,40 @@ h2,h3,
 h2 {
     animation: type2 3s steps(60, end);
 }
-h3{
-    animation: type2 4s steps(60, end);  
+
+h3 {
+    animation: type2 4s steps(60, end);
 }
 
 .typing1 {
-    animation: type2 5s steps(60, end);
-}
-
-.typing2 {
     animation: type2 6s steps(60, end);
 }
 
+.typing2 {
+    animation: type2 9s steps(60, end);
+}
+
 .typing3 {
-    animation: type2 8s steps(100, end);
+    animation: type2 14s steps(100, end);
 }
 
 .typing4 {
 
-    animation: type2 10s steps(60, end);
-}
-.typing5{
-
-    animation: type2 13s steps(60, end);    
+    animation: type2 20s steps(60, end);
 }
 
-#developer {
+.typing5 {
+
+    animation: type2 35s steps(60, end);
+}
+
+.typing6 {
+
+    animation: type2 67s steps(60, end);
+}
+
+
+/* #developer {
     color: rgb(239, 238, 241);
     font-family: "Courier";
     font-size: 17px;
@@ -99,12 +115,22 @@ h3{
     overflow: hidden;
     width: 100%;
 
-}
+} */
 
 .years {
     background-color: black;
     margin: 0px 10px;
     animation: blink 2s infinite;
+}
+
+.instagram {
+
+    COLOR: #E1306C;
+}
+
+.twitter {
+
+    color: #405DE6;
 }
 
 span {
@@ -131,19 +157,6 @@ span {
     }
 }
 
-@keyframes type3 {
-    0% {
-        width: 0;
-    }
-
-    50% {
-        width: 0;
-    }
-
-    100% {
-        width: 100;
-    }
-}
 
 @keyframes blink {
     to {
@@ -152,12 +165,17 @@ span {
 }
 
 @media only screen and (min-width: 992px) {
-   h1,h2,h3,
-.typing1,
-.typing2,
-.typing3,
-.typing4,
-.typing5 {
-    white-space: nowrap;
-}
+
+    h1,
+    h2,
+    h3,
+    .typing1,
+    .typing2,
+    .typing3,
+    .typing4,
+    .typing5,
+    .typing6,
+    .typing7 {
+        white-space: nowrap;
+    }
 }

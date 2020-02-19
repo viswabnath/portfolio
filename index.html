@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,29 @@
   <title> Viswanath Bodasakurthi </title>
   <link rel="shortcut icon" type="img/png" href="viswanath.png" />
   <link rel="stylesheet" href="styles.css">
+
 </head>
 
-
 <body>
+  <embed src="typewriter-1.mp3" width="180" height="90" loop="true" autostart="ture" hidden="true" />
+
   <div class="container">
-    <h1> portfolio/viswabnath> <span> _</span></h1>
+
+    <h1> Portfolio/viswabnath> <span> _</span></h1>
     <h2> Hi, I'm Viswanath Bodasakurthi.</h2>
 
-    <div class="resume">
+    <div>
       <h3> I'm a Developer</h3>
     </div>
-    <div>
+
+    <!-- <div>
       <p id="developer"></p>
-    </div>
+    </div> -->
 
     <div class="typing1"> Working @ Sellcraft Global Solutions Bangalore Since <span class="years" id="years"> </span>
       years
     </div>
+
     <script>
       totalyears: String;
       var d = new Date();
@@ -37,20 +43,29 @@
       document.getElementById("years").innerHTML = Math.floor(years);
     </script>
 
-    <div class="typing2"> You can find my works and code which I've wrote here on <a
-        href="https://github.com/viswabnath">
-        Github </a></div>
+    <div class="typing2"> View my works here <a href="https://github.com/viswabnath">Github</a> and my <a
+        href="https://viswabnath.github.io">Experience</a> here</div>
 
-    <div class="typing3"> You can find my writings on <a href="https://medium.com/@viswabnath">Medium</a></div>
+    <div class="typing3"> Find my writings on <a href="https://medium.com/@viswabnath">Medium</a></div>
 
-    <div class="typing4"> I <span class="nveg">&#10084</span> experimenting with code &#128540; but sometimes it will
-      test
-      my patience &#128529; </div>
+    <div class="typing4"> I <span class="nveg">&#10084</span> Watching Movies, Reading Books, Cooking , Eating( Mostly
+      <span class="veg">V</span>) &
+      Exploring New Places
+      <!-- experimenting with code ( &#128540; but sometimes it will
+      test my patience &#128529; ), -->
+    </div>
 
-    <div class="typing5"> I enjoy watching movies, reading books, cooking , Eating( Mostly <span
-        class="veg">V</span>,<span class="nveg"> N </span> ),Travelling & Exploring New Places. </div>
+    <!-- <div class="typing5"> I Love Watching Movies, Reading Books, Cooking , Eating( Mostly <span class="veg">V</span>) &
+      Exploring New Places. </div> -->
 
-    <script>
+    <div class="typing5"> To get in touch just visit <a class="twitter"
+        href="https://twitter.com/viswabnath">Twitter</a>, <a class="instagram"
+        href="https://instagram.com/viswabnath">instagram</a> or just drop a mail to viswanathbodasakurthi@gmail.com
+    </div>
+
+    <div class="typing6"> Cheers !! Let's catchup soon &#128540; </div>
+
+    <!-- <script>
       var i = 0;
       var txt = 'I Having two years of experience in developing UI for both Web & Mobile Applications ';
       var speed = 15;
@@ -61,10 +76,10 @@
           setTimeout(typeWriter, speed);
         }
       }
-    </script>
+    </script> -->
   </div>
-  
-    <SCRIPT LANGUAGE="JavaScript">
+
+  <script LANGUAGE="JavaScript">
     var message = "Sorry, right click was disabled.";
     function clickIE() { if (document.all) { alert(message); return false; } }
     function clickNS(e) {
@@ -76,7 +91,6 @@
     if (document.layers) { document.captureEvents(Event.MOUSEDOWN); document.onmousedown = clickNS; }
     else { document.onmouseup = clickNS; document.oncontextmenu = clickIE; }
     document.oncontextmenu = new Function("return false")
-
   </script>
   <!-- end of Right click -->
 
@@ -97,5 +111,6 @@
       }
     }
   </script>
-  </body>
-  </html>
+</body>
+
+</html>
