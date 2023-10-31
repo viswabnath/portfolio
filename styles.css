@@ -1,40 +1,26 @@
 body {
     margin: 30px;
     text-align: left;
-    /* background-color: rgb(58, 61, 228); */
     background-color: #061922;
-    /* background-color: black; */
+    font-family: 'Arial', sans-serif; /* Choose a suitable font family */
+    color: #fff;
 }
 
 a {
     color: #fefe00;
+    text-decoration: none; /* Remove underlines from links */
 }
 
 .container {
     position: absolute;
     left: 10%;
     right: 10%;
-
 }
 
-/* 
-.resume {
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 20px;
-    transition: 0.0s;
-    font-family: "Courier";
-
-} */
-
 h1 {
-    color: #fff;
-    font-family: "Courier";
-    font-size: 20px;
-    margin: 30px 0px 0 10px;
+    font-family: 'Courier New', monospace; /* Maintain the typewriter effect */
+    font-size: 24px; /* Increase font size for better readability */
+    margin: 30px 0 0 10px;
     white-space: nowrap;
     overflow: hidden;
     width: 100%;
@@ -45,12 +31,6 @@ h1 {
     color: lime;
 }
 
-.nveg {
-
-    color: red;
-}
-
-
 h2,
 h3,
 .typing1,
@@ -60,12 +40,10 @@ h3,
 .typing5,
 .typing6,
 .typing7 {
-    color: rgb(207, 197, 199);
-    font-family: "Courier";
-    font-size: 19px;
-    margin: 10px 0px 0px 10px;
-    padding: 10px 0px;
-    /* white-space: nowrap; */
+    font-family: 'monospace'; /* Choose a modern, readable font */
+    font-size: 20px; /* Adjust font size for readability */
+    margin: 10px 0 0 10px;
+    padding: 10px 0;
     overflow: hidden;
     width: 100%;
 }
@@ -91,49 +69,32 @@ h3 {
 }
 
 .typing4 {
-
     animation: type2 20s steps(60, end);
 }
 
 .typing5 {
-
     animation: type2 35s steps(60, end);
 }
 
 .typing6 {
-
     animation: type2 67s steps(60, end);
 }
 
-
-/* #developer {
-    color: rgb(239, 238, 241);
-    font-family: "Courier";
-    font-size: 17px;
-    margin: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 100%;
-
-} */
-
 .years {
     background-color: black;
-    margin: 0px 10px;
+    margin: 0 10px;
     animation: blink 2s infinite;
 }
 
 .instagram {
-
-    COLOR: #E1306C;
+    color: #E1306C;
 }
 
 .twitter {
-
     color: #405DE6;
 }
 
-span {
+.blink {
     animation: blink 1s infinite;
 }
 
@@ -147,16 +108,13 @@ span {
     0% {
         width: 0;
     }
-
     50% {
         width: 0;
     }
-
     100% {
         width: 100;
     }
 }
-
 
 @keyframes blink {
     to {
@@ -165,7 +123,6 @@ span {
 }
 
 @media only screen and (min-width: 992px) {
-
     h1,
     h2,
     h3,
