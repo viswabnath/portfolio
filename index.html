@@ -2,41 +2,286 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Viswanath Terminal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚀 Viswanath Bodasakurthi</title>
-  <link rel="shortcut icon" type="image/png" href="viswanath.png" />
-  <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --terminal-bg: #101114;
+      --terminal-fg: #fff;
+      --primary: #00d8ff;
+      --prompt: #00d8ff;
+      --accent: #fefe00;
+      --button-bg: #18191c;
+      --button-border: #2d2e32;
+      --button-hover: #232428;
+      --github: #6cc644;
+      --linkedin: #0077b5;
+      --medium: #00ab6c;
+      --twitter: #1da1f2;
+      --instagram: #e1306c;
+      --email: #ff9800;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      background: var(--terminal-bg);
+      color: var(--terminal-fg);
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .terminal {
+      background: var(--terminal-bg);
+      border-radius: 10px;
+      border: 1.5px solid #222;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+      max-width: 700px;
+      width: 100%;
+      padding: 0 0 2rem 0;
+      position: relative;
+    }
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      padding: 0.7rem 1.2rem;
+      border-bottom: 1.5px solid #232428;
+      background: #18191c;
+      border-radius: 10px 10px 0 0;
+    }
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 7px;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #b8b8b8;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      font-weight: 500;
+    }
+    .terminal-body {
+      padding: 2rem 2rem 0 1rem;
+      background: var(--terminal-bg);
+    }
+    .command-line {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.3rem;
+      font-size: 1.08rem;
+    }
+    .prefix {
+      color: var(--prompt);
+      font-weight: bold;
+      margin-right: 0.7rem;
+      min-width: 170px;
+      text-align: right;
+      user-select: none;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+    .typed-text {
+      white-space: pre-line;
+      min-height: 1.1em;
+      display: inline-block;
+      font-size: 1.08rem;
+      color: var(--terminal-fg);
+    }
+    .typed-text.typing {
+      border-right: 2px solid var(--primary);
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1em;
+      vertical-align: middle;
+      background: none;
+      border-right: 2px solid var(--primary);
+      animation: blink 1s steps(1) infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: var(--primary); }
+    }
+    /* Colorful inline links */
+    .typed-text a[href*="github"] { color: var(--github); font-weight: bold; text-decoration: underline;}
+    .typed-text a[href*="linkedin"] { color: var(--linkedin); font-weight: bold; text-decoration: underline;}
+    .typed-text a[href*="medium"] { color: var(--medium); font-weight: bold; text-decoration: underline;}
+    .typed-text a[href*="twitter"] { color: var(--twitter); font-weight: bold; text-decoration: underline;}
+    .typed-text a[href*="instagram"] { color: var(--instagram); font-weight: bold; text-decoration: underline;}
+    .typed-text a[href^="mailto:"] { color: var(--email); font-weight: bold; text-decoration: underline;}
+    .typed-text a:hover { filter: brightness(1.3); }
+    /* Colorful social buttons */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .social-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1.5px solid var(--button-border);
+      border-radius: 5px;
+      padding: 0.45rem 1.2rem;
+      background: var(--button-bg);
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.2rem 0;
+    }
+    .social-link.github { color: var(--github); border-color: var(--github);}
+    .social-link.linkedin { color: var(--linkedin); border-color: var(--linkedin);}
+    .social-link.medium { color: var(--medium); border-color: var(--medium);}
+    .social-link.twitter { color: var(--twitter); border-color: var(--twitter);}
+    .social-link.instagram { color: var(--instagram); border-color: var(--instagram);}
+    .social-link.email { color: var(--email); border-color: var(--email);}
+    .social-link:hover {
+      background: #fff;
+      color: #18191c !important;
+      border-color: #fff;
+    }
+    .social-link i {
+      font-size: 1.1em;
+      opacity: 0.8;
+    }
+    @media (max-width: 600px) {
+      .terminal-body { padding: 1.2rem 0.5rem 0 0.5rem; }
+      .prefix { min-width: 80px; font-size: 0.95rem;}
+      .command-line { font-size: 0.97rem;}
+    }
+  </style>
 </head>
 <body>
-  
-  <embed src="typewriter-1.mp3" width="180" height="90" loop="true" autostart="true" hidden="true" />
-  <div class="container">
-    <h1>👨‍💻 Portfolio/viswanath </h1>
-    <h2>Hey, I'm Viswanath Bodasakurthi <span>👋</span></h2>
+  <!-- Start overlay for user interaction -->
+  <div id="start-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#101114;color:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:10000;font-family: monospace;flex-direction:column;text-align:center;">
     <div>
-      <h3>🌟 Front-End Developer | MH❤️ | Indian | MSDian | S/o Sai Sankar Nath</h3>
+      <p style="font-size:1.5rem;">Click anywhere to view portfolio</p>
     </div>
-    <div class="typing1">Commenced my coding journey in 2017, and now I'm here to master the digital realm! 🌐</div>
-    <div class="typing2">Explore my coding wizardry on <a href="https://github.com/viswabnath"
-        target="_blank">Github</a> and check out my <a href="https://www.linkedin.com/in/viswabnath/"
-        target="_blank">Expertise</a> 📂</div>
-    <div class="typing3">Discover my thoughts on Tech and personal interests on <a href="https://medium.com/@viswabnath"
-        target="_blank">Medium</a> 📚</div>
-    <div class="typing4">When I'm not coding, I'm on epic quests: Watching Movies 🎬, Reading Books 📖, Cooking 🍳, Eating Mostly <span class="veg">Veg🍅</span>,
-      and Exploring New Places 🌍. 🗺️</div>
-    <div class="typing5">Let's connect! Find me on <a class="twitter" href="https://twitter.com/viswabnath"
-        target="_blank">Twitter</a>, <a class="instagram" href="https://instagram.com/viswabnath">Instagram</a>, or drop
-      an email 📩 at <a href="mailto:viswanathbodasakurthi@gmail.com">viswanathbodasakurthi@gmail.com</a></div>
-    <div class="typing6">Cheers! Let's catch up soon and share some laughs! 😄 <span class="blink">_</span></div>
   </div>
-  <script LANGUAGE="JavaScript">
-    // Right-click prevention code (if needed)
-  </script>
+  <!-- Typewriter sound -->
+  <audio id="typewriterSound" src="./typewriter-1.ogg"></audio>
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="terminal-dot dot-red"></div>
+      <div class="terminal-dot dot-yellow"></div>
+      <div class="terminal-dot dot-green"></div>
+      <div class="terminal-title">viswanath@portfolio:~</div>
+    </div>
+    <div class="terminal-body" id="terminal-body">
+      <!-- Lines will be injected here -->
+    </div>
+    <div class="social-links" id="social-links" style="display:none;">
+     <a class="social-link medium" href="https://medium.com/@viswabnath" target="_blank" rel="noopener"><i class="fab fa-medium"></i>Medium</a>
+      <a class="social-link twitter" href="https://twitter.com/viswabnath" target="_blank" rel="noopener"><i class="fab fa-twitter"></i>Twitter</a>
+      <a class="social-link instagram" href="https://instagram.com/viswabnath" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>Instagram</a>
+      <a class="social-link email" href="mailto:viswanathbodasakurthi@gmail.com"><i class="fas fa-envelope"></i>Email</a>
+    </div>
+  </div>
   <script>
-    // JavaScript code ( if needed )
+    // Each command line with its own prefix and text (HTML allowed in text)
+    const lines = [
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "👋 Hey, I'm Viswanath Bodasakurthi" },
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "Senior Frontend Developer | Digital Solutions Architect" },
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "Founder of Onemark Digital Solutions - Web, Marketing & Video" },
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "Started coding in 2017, now mastering the digital realm!" },
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "Movies, Books, Cooking, <span style='color:#00ff99'>Veg Food</span>, Travel" },
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "Explore my work & experience on <a href='https://github.com/viswabnath' target='_blank'>GitHub</a> and <a href='https://www.linkedin.com/in/viswabnath/' target='_blank'>LinkedIn</a>!" },
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "Let's connect! <a href='mailto:viswanathbodasakurthi@gmail.com'>viswanathbodasakurthi@gmail.com</a>" },
+      { prefix: "Viswanath-MacBook-Air ~ %", text: "Cheers! Let's catch up soon and share some laughs! 😄" }
+    ];
+
+    // Typewriter effect for each line, sequentially
+    async function typeLine(lineObj, container, sound, isLast) {
+      const lineDiv = document.createElement('div');
+      lineDiv.className = 'command-line';
+      const prefixSpan = document.createElement('span');
+      prefixSpan.className = 'prefix';
+      prefixSpan.innerHTML = lineObj.prefix;
+      const textSpan = document.createElement('span');
+      textSpan.className = 'typed-text typing';
+      lineDiv.appendChild(prefixSpan);
+      lineDiv.appendChild(textSpan);
+      container.appendChild(lineDiv);
+
+      // Strip HTML tags for typing effect
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = lineObj.text;
+      const plainText = tempDiv.textContent || tempDiv.innerText || "";
+
+      // Typing effect
+      sound.currentTime = 0;
+      sound.play();
+      for (let i = 0; i <= plainText.length; i++) {
+        // Show HTML up to i-th character
+        // Find the substring in HTML that matches i visible characters
+        let visibleCount = 0, htmlIndex = 0, html = lineObj.text;
+        let result = '';
+        let inTag = false;
+        while (visibleCount < i && htmlIndex < html.length) {
+          let char = html[htmlIndex];
+          result += char;
+          if (char === '<') inTag = true;
+          else if (char === '>') inTag = false;
+          else if (!inTag) visibleCount++;
+          htmlIndex++;
+        }
+        textSpan.innerHTML = result;
+        await new Promise(r => setTimeout(r, 27));
+      }
+      sound.pause();
+      textSpan.classList.remove('typing');
+      textSpan.classList.add('done');
+      // If this is the last line, add a blinking cursor
+      if(isLast) {
+        const cursor = document.createElement('span');
+        cursor.className = 'typing-cursor';
+        textSpan.parentNode.appendChild(cursor);
+      }
+      await new Promise(r => setTimeout(r, 300));
+    }
+
+    async function typeAllLines() {
+      const container = document.getElementById('terminal-body');
+      const sound = document.getElementById('typewriterSound');
+      for (let i = 0; i < lines.length; i++) {
+        await typeLine(lines[i], container, sound, i === lines.length - 1);
+      }
+      document.getElementById('social-links').style.display = 'flex';
+    }
+
+    // Require user interaction to start typing and sound
+    document.getElementById('start-overlay').addEventListener('click', function () {
+      this.style.display = 'none';
+      // Play sound once to unlock audio context
+      const sound = document.getElementById('typewriterSound');
+      sound.play().then(() => {
+        sound.pause();
+        sound.currentTime = 0;
+        typeAllLines();
+      }).catch(() => {
+        // Even if play fails, start typing (sound may not play)
+        typeAllLines();
+      });
+    });
   </script>
-  <style>
-    /* Your CSS styles (if needed) */
-  </style>
 </body>
 </html>
