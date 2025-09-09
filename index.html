@@ -1,287 +1,669 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Viswanath Terminal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --terminal-bg: #101114;
-      --terminal-fg: #fff;
-      --primary: #00d8ff;
-      --prompt: #00d8ff;
-      --accent: #fefe00;
-      --button-bg: #18191c;
-      --button-border: #2d2e32;
-      --button-hover: #232428;
-      --github: #6cc644;
-      --linkedin: #0077b5;
-      --medium: #00ab6c;
-      --twitter: #1da1f2;
-      --instagram: #e1306c;
-      --email: #ff9800;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viswanath Bodasakurthi - Senior Software Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="shortcut icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- SEO and Social Meta -->
+    <meta name="description" content="Senior Software Engineer with 7+ years experience in Angular, React, Blockchain, and Full-Stack Development. Founder of Onemark Digital Agency.">
+    <meta name="keywords" content="Software Engineer, Angular, React, Blockchain, Full-Stack Developer, Frontend Developer">
+    <meta property="og:title" content="Viswanath Bodasakurthi - Senior Software Engineer">
+    <meta property="og:description" content="Senior Software Engineer specializing in Angular, React, and Blockchain technologies">
+    <meta property="og:image" content="assets/images/favicon.svg">
+    <meta property="og:type" content="website">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Viswanath Bodasakurthi",
+        "jobTitle": "Senior Software Engineer",
+        "email": "viswanathbodasakurthi@gmail.com",
+        "url": "https://viswabnath.github.io",
+        "sameAs": [
+            "https://github.com/viswabnath",
+            "https://linkedin.com/in/viswabnath",
+            "https://twitter.com/viswabnath"
+        ]
     }
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Fira Mono', 'Consolas', monospace;
-      background: var(--terminal-bg);
-      color: var(--terminal-fg);
-    }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .terminal {
-      background: var(--terminal-bg);
-      border-radius: 10px;
-      border: 1.5px solid #222;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-      max-width: 700px;
-      width: 100%;
-      padding: 0 0 2rem 0;
-      position: relative;
-    }
-    .terminal-header {
-      display: flex;
-      align-items: center;
-      padding: 0.7rem 1.2rem;
-      border-bottom: 1.5px solid #232428;
-      background: #18191c;
-      border-radius: 10px 10px 0 0;
-    }
-    .terminal-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin-right: 7px;
-    }
-    .dot-red { background: #ff5f56; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
-    .terminal-title {
-      flex: 1;
-      text-align: center;
-      color: #b8b8b8;
-      font-size: 1.05rem;
-      letter-spacing: 1px;
-      opacity: 0.8;
-      font-weight: 500;
-    }
-    .terminal-body {
-      padding: 2rem 2rem 0 1rem;
-      background: var(--terminal-bg);
-    }
-    .command-line {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1.3rem;
-      font-size: 1.08rem;
-    }
-    .prefix {
-      color: var(--prompt);
-      font-weight: bold;
-      margin-right: 0.7rem;
-      min-width: 170px;
-      text-align: right;
-      user-select: none;
-      letter-spacing: 1px;
-      flex-shrink: 0;
-    }
-    .typed-text {
-      white-space: pre-line;
-      min-height: 1.1em;
-      display: inline-block;
-      font-size: 1.08rem;
-      color: var(--terminal-fg);
-    }
-    .typed-text.typing {
-      border-right: 2px solid var(--primary);
-    }
-    .typing-cursor {
-      display: inline-block;
-      width: 10px;
-      height: 1em;
-      vertical-align: middle;
-      background: none;
-      border-right: 2px solid var(--primary);
-      animation: blink 1s steps(1) infinite;
-      margin-left: 2px;
-    }
-    @keyframes blink {
-      0%, 100% { border-color: transparent; }
-      50% { border-color: var(--primary); }
-    }
-    /* Colorful inline links */
-    .typed-text a[href*="github"] { color: var(--github); font-weight: bold; text-decoration: underline;}
-    .typed-text a[href*="linkedin"] { color: var(--linkedin); font-weight: bold; text-decoration: underline;}
-    .typed-text a[href*="medium"] { color: var(--medium); font-weight: bold; text-decoration: underline;}
-    .typed-text a[href*="twitter"] { color: var(--twitter); font-weight: bold; text-decoration: underline;}
-    .typed-text a[href*="instagram"] { color: var(--instagram); font-weight: bold; text-decoration: underline;}
-    .typed-text a[href^="mailto:"] { color: var(--email); font-weight: bold; text-decoration: underline;}
-    .typed-text a:hover { filter: brightness(1.3); }
-    /* Colorful social buttons */
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .social-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      border: 1.5px solid var(--button-border);
-      border-radius: 5px;
-      padding: 0.45rem 1.2rem;
-      background: var(--button-bg);
-      transition: background 0.2s, color 0.2s, border 0.2s;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 0.2rem 0;
-    }
-    .social-link.github { color: var(--github); border-color: var(--github);}
-    .social-link.linkedin { color: var(--linkedin); border-color: var(--linkedin);}
-    .social-link.medium { color: var(--medium); border-color: var(--medium);}
-    .social-link.twitter { color: var(--twitter); border-color: var(--twitter);}
-    .social-link.instagram { color: var(--instagram); border-color: var(--instagram);}
-    .social-link.email { color: var(--email); border-color: var(--email);}
-    .social-link:hover {
-      background: #fff;
-      color: #18191c !important;
-      border-color: #fff;
-    }
-    .social-link i {
-      font-size: 1.1em;
-      opacity: 0.8;
-    }
-    @media (max-width: 600px) {
-      .terminal-body { padding: 1.2rem 0.5rem 0 0.5rem; }
-      .prefix { min-width: 80px; font-size: 0.95rem;}
-      .command-line { font-size: 0.97rem;}
-    }
-  </style>
+    </script>
 </head>
 <body>
-  <!-- Start overlay for user interaction -->
-  <div id="start-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#101114;color:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:10000;font-family: monospace;flex-direction:column;text-align:center;">
-    <div>
-      <p style="font-size:1.5rem;">Click anywhere to view portfolio</p>
-    </div>
-  </div>
-  <!-- Typewriter sound -->
-  <audio id="typewriterSound" src="./typewriter-1.ogg"></audio>
-  <div class="terminal">
-    <div class="terminal-header">
-      <div class="terminal-dot dot-red"></div>
-      <div class="terminal-dot dot-yellow"></div>
-      <div class="terminal-dot dot-green"></div>
-      <div class="terminal-title">viswanath@portfolio:~</div>
-    </div>
-    <div class="terminal-body" id="terminal-body">
-      <!-- Lines will be injected here -->
-    </div>
-    <div class="social-links" id="social-links" style="display:none;">
-     <a class="social-link medium" href="https://medium.com/@viswabnath" target="_blank" rel="noopener"><i class="fab fa-medium"></i>Medium</a>
-      <a class="social-link twitter" href="https://twitter.com/viswabnath" target="_blank" rel="noopener"><i class="fab fa-twitter"></i>Twitter</a>
-      <a class="social-link instagram" href="https://instagram.com/viswabnath" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>Instagram</a>
-      <a class="social-link email" href="mailto:viswanathbodasakurthi@gmail.com"><i class="fas fa-envelope"></i>Email</a>
-    </div>
-  </div>
-  <script>
-    // Each command line with its own prefix and text (HTML allowed in text)
-    const lines = [
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "👋 Hey, I'm Viswanath Bodasakurthi" },
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "Senior Frontend Developer | Digital Solutions Architect" },
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "Founder of Onemark Digital Solutions - Web, Marketing & Video" },
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "Started coding in 2017, now mastering the digital realm!" },
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "Movies, Books, Cooking, <span style='color:#00ff99'>Veg Food</span>, Travel" },
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "Explore my work & experience on <a href='https://github.com/viswabnath' target='_blank'>GitHub</a> and <a href='https://www.linkedin.com/in/viswabnath/' target='_blank'>LinkedIn</a>!" },
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "Let's connect! <a href='mailto:viswanathbodasakurthi@gmail.com'>viswanathbodasakurthi@gmail.com</a>" },
-      { prefix: "Viswanath-MacBook-Air ~ %", text: "Cheers! Let's catch up soon and share some laughs! 😄" }
-    ];
+    <!-- Particle Background -->
+    <div id="particles-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>Portfolio</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#resume" class="btn-resume">Resume <i class="fas fa-eye"></i></a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-    // Typewriter effect for each line, sequentially
-    async function typeLine(lineObj, container, sound, isLast) {
-      const lineDiv = document.createElement('div');
-      lineDiv.className = 'command-line';
-      const prefixSpan = document.createElement('span');
-      prefixSpan.className = 'prefix';
-      prefixSpan.innerHTML = lineObj.prefix;
-      const textSpan = document.createElement('span');
-      textSpan.className = 'typed-text typing';
-      lineDiv.appendChild(prefixSpan);
-      lineDiv.appendChild(textSpan);
-      container.appendChild(lineDiv);
+    <!-- Hero Section with Terminal -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="terminal-section">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-title">viswanath@portfolio:~$</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-content" id="terminal-content">
+                            <!-- Dynamic typing content will be inserted here -->
+                        </div>
+                        <div class="cursor" id="cursor">|</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-info">
+                <div class="profile-card">
+                                        <img src="assets/images/profile.png" alt="Viswanath Bodasakurthi" class="profile-image">
+                    <div class="profile-content">
+                        <h1 class="name">Viswanath Bodasakurthi</h1>
+                        <p class="role">Senior Software Engineer</p>
+                        <p class="specialization">Angular Expert | Blockchain Developer | Tech Entrepreneur | Crypto Enthusiast</p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="experience-years">7+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                           
+                            <div class="stat-item">
+                                <span class="stat-number">1</span>
+                                <span class="stat-label">Startup Founded</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn-primary">
+                                <i class="fas fa-envelope"></i> Let's Talk
+                            </a>
+                            <a href="#projects" class="btn-secondary">
+                                <i class="fas fa-code"></i> View Work
+                            </a>
+                        </div>
+                        
+                        <div class="social-preview">
+                            <a href="https://github.com/viswabnath" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/viswabnath" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://twitter.com/viswabnath" target="_blank" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
 
-      // Strip HTML tags for typing effect
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = lineObj.text;
-      const plainText = tempDiv.textContent || tempDiv.innerText || "";
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Passionate about creating innovative digital solutions</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="intro">
+                        I'm a Senior Software Engineer with over <strong id="about-experience-years">7</strong> years of professional experience 
+                        in full-stack development and entrepreneurship. As the founder of 
+                        <a href="https://onemark.co.in/" target="_blank" class="highlight-link">Onemark Digital Agency</a>, 
+                        I've successfully combined technical expertise with business acumen.
+                    </p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <div class="expertise-icon">
+                                <i class="fab fa-angular"></i>
+                            </div>
+                            <h4>Frontend Mastery</h4>
+                            <p>Expert in Angular, React, and modern JavaScript frameworks with 50+ production applications</p>
+                        </div>
+                        
+                        <div class="expertise-item">
+                            <div class="expertise-icon">
+                                <i class="fas fa-cubes"></i>
+                            </div>
+                            <h4>Blockchain Innovation</h4>
+                            <p>Specialized in blockchain solutions, smart contracts, and decentralized applications</p>
+                        </div>
+                        
+                        <div class="expertise-item">
+                            <div class="expertise-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4>Entrepreneurship</h4>
+                            <p>Founded and scaled a digital agency serving 100+ clients across various industries</p>
+                        </div>
+                        
+                        <div class="expertise-item">
+                            <div class="expertise-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Team Leadership</h4>
+                            <p>Led cross-functional teams of 6+ developers in complex enterprise projects</p>
+                        </div>
+                        
+                        <div class="expertise-item">
+                            <div class="expertise-icon">
+                                <i class="fab fa-bitcoin"></i>
+                            </div>
+                            <h4>Crypto & DeFi Expert</h4>
+                            <p>Active in crypto space with expertise in airdrop farming, DeFi protocols, and Web3 ecosystem navigation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      // Typing effect
-      sound.currentTime = 0;
-      sound.play();
-      for (let i = 0; i <= plainText.length; i++) {
-        // Show HTML up to i-th character
-        // Find the substring in HTML that matches i visible characters
-        let visibleCount = 0, htmlIndex = 0, html = lineObj.text;
-        let result = '';
-        let inTag = false;
-        while (visibleCount < i && htmlIndex < html.length) {
-          let char = html[htmlIndex];
-          result += char;
-          if (char === '<') inTag = true;
-          else if (char === '>') inTag = false;
-          else if (!inTag) visibleCount++;
-          htmlIndex++;
-        }
-        textSpan.innerHTML = result;
-        await new Promise(r => setTimeout(r, 27));
-      }
-      sound.pause();
-      textSpan.classList.remove('typing');
-      textSpan.classList.add('done');
-      // If this is the last line, add a blinking cursor
-      if(isLast) {
-        const cursor = document.createElement('span');
-        cursor.className = 'typing-cursor';
-        textSpan.parentNode.appendChild(cursor);
-      }
-      await new Promise(r => setTimeout(r, 300));
-    }
+    <!-- Experience Section -->
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Journey</h2>
+                <p>Building innovative solutions across diverse industries</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Senior Software Engineer</h3>
+                            <h4>CLARIO - Channelsoft</h4>
+                            <span class="duration">January 2024 - Present</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Leading development of clinical research applications for global healthcare technology solutions.</p>
+                            <ul class="achievements">
+                                <li>Architected multi-language clinical research applications supporting 15+ languages</li>
+                                <li>Built automated CLI tools reducing deployment time by 60%</li>
+                                <li>Mentored 4 junior developers and improved team productivity by 40%</li>
+                                <li>Implemented HIPAA compliant patient diary systems</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Angular</span>
+                                <span class="tech-tag">Applanga</span>
+                                <span class="tech-tag">Podman</span>
+                                <span class="tech-tag">HIPAA Compliance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Lead Frontend Developer</h3>
+                            <h4>Purple Drive Technologies (TCS Contract)</h4>
+                            <span class="duration">October 2022 - January 2024</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Led modernization of legacy banking applications for critical financial systems.</p>
+                            <ul class="achievements">
+                                <li>Migrated from AngularJS to Angular 14, improving performance by 50%</li>
+                                <li>Achieved 85% code coverage with comprehensive testing strategy</li>
+                                <li>Reduced deployment time from 4 hours to 30 minutes</li>
+                                <li>Led cross-functional team of 6 developers</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Angular 14</span>
+                                <span class="tech-tag">Mocha & Chai</span>
+                                <span class="tech-tag">CI/CD</span>
+                                <span class="tech-tag">Banking Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Developer</h3>
+                            <h4>Gariyasi Systems Pvt Ltd</h4>
+                            <span class="duration">April 2021 - September 2022</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Designed innovative blockchain-based supply chain solutions for product authentication.</p>
+                            <ul class="achievements">
+                                <li>Architected end-to-end blockchain solution using Multichain technology</li>
+                                <li>Developed responsive web dashboard and hybrid mobile app</li>
+                                <li>Integrated IoT sensors and QR code scanning capabilities</li>
+                                <li>Secured 3 major enterprise clients through demonstrations</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Multichain</span>
+                                <span class="tech-tag">Angular 12</span>
+                                <span class="tech-tag">Ionic 5</span>
+                                <span class="tech-tag">Smart Contracts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Co-Founder</h3>
+                            <h4>Onemark Digital Agency</h4>
+                            <span class="duration">2017 - Present</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Founded and scaled a full-service digital agency providing comprehensive digital solutions.</p>
+                            <ul class="achievements">
+                                <li>Built team serving 100+ clients across various industries</li>
+                                <li>Increased client revenue by 30-200% through digital marketing</li>
+                                <li>Developed 50+ websites with focus on user experience</li>
+                                <li>Established partnerships with educational institutions and enterprises</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Digital Marketing</span>
+                                <span class="tech-tag">Web Development</span>
+                                <span class="tech-tag">Video Production</span>
+                                <span class="tech-tag">Business Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    async function typeAllLines() {
-      const container = document.getElementById('terminal-body');
-      const sound = document.getElementById('typewriterSound');
-      for (let i = 0; i < lines.length; i++) {
-        await typeLine(lines[i], container, sound, i === lines.length - 1);
-      }
-      document.getElementById('social-links').style.display = 'flex';
-    }
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Showcasing innovation through code</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-hospital-alt"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="http://portal.ert.com/dashboard" class="btn-project">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                          
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Clinical Research Platform</h3>
+                        <p>Multi-language clinical trial platform supporting 15+ languages for global healthcare research with HIPAA compliance.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">Applanga</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-overlay">
+                          
+                            <a href="https://github.com/viswabnath/expense-income-tracker" target="_blank" class="btn-project">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Balance Track</h3>
+                        <p>Modern expense and income tracking application with intuitive dashboard, real-time analytics, and comprehensive financial management features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://viswabnath.github.io/CryptoNerd/" target="_blank" class="btn-project">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/viswabnath/CryptoNerd" target="_blank" class="btn-project">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>CryptoNerd</h3>
+                        <p>Advanced cryptocurrency tools and utilities for airdrop farming, portfolio tracking, and crypto space engagement with automated features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Crypto</span>
+                            <span class="tech-tag">Web3</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://onemark.co.in/" target="_blank" class="btn-project">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                          
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Onemark Digital Agency</h3>
+                        <p>Full-service digital agency website and platform serving 100+ clients with comprehensive digital solutions.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Business</span>
+                            <span class="tech-tag">Digital Marketing</span>
+                            <span class="tech-tag">Full-Stack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Require user interaction to start typing and sound
-    document.getElementById('start-overlay').addEventListener('click', function () {
-      this.style.display = 'none';
-      // Play sound once to unlock audio context
-      const sound = document.getElementById('typewriterSound');
-      sound.play().then(() => {
-        sound.pause();
-        sound.currentTime = 0;
-        typeAllLines();
-      }).catch(() => {
-        // Even if play fails, start typing (sound may not play)
-        typeAllLines();
-      });
-    });
-  </script>
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Expertise</h2>
+                <p>Mastering technologies that drive innovation</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <h3>Frontend Frameworks</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Angular</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Ionic</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">TypeScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>Blockchain & Web3</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Multichain</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Smart Contracts</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Hyperledger</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>DevOps & Tools</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Git & CI/CD</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker/Podman</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Testing</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Build Something Amazing</h2>
+                <p>Ready to bring your ideas to life</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <a href="mailto:viswanathbodasakurthi@gmail.com">viswanathbodasakurthi@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <span>Kakinada, Andhra Pradesh, India</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Availability</h4>
+                            <span>Open to new opportunities</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links-extended">
+                    <h3>Connect With Me</h3>
+                    <div class="social-grid">
+                        <a href="https://github.com/viswabnath" target="_blank" class="social-card github">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/viswabnath" target="_blank" class="social-card linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://twitter.com/viswabnath" target="_blank" class="social-card twitter">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="https://www.facebook.com/viswabnath" target="_blank" class="social-card facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/viswabnath/" target="_blank" class="social-card instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://onemark.co.in/" target="_blank" class="social-card website">
+                            <i class="fas fa-globe"></i>
+                            <span>Onemark</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Download Section -->
+    <section class="resume-section" id="resume">
+        <div class="container">
+            <div class="resume-card">
+                <div class="resume-content">
+                    <h3>View My Resume</h3>
+                    <p>Get a comprehensive overview of my experience, skills, and achievements</p>
+                    <a href="https://viswabnath.github.io/" target="_blank" class="btn-download">
+                        <i class="fas fa-eye"></i>
+                        View Full Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Viswanath Bodasakurthi. Crafted with <i class="fas fa-heart"></i> and lots of coffee.</p>
+                <p>Building the future, one line of code at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
