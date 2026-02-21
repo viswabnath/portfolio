@@ -1026,22 +1026,48 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--bg-primary);
-    padding: 3rem 0;
-    text-align: center;
-    border-top: 1px solid var(--border-color);
-    position: relative;
-    z-index: 1;
+  padding: 40px 20px;
+  background: #0f172a; /* dark premium */
+  color: #cbd5e1;
+  text-align: center;
 }
 
-.footer-content p {
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.footer-content .fas {
-    color: #ff6b6b;
-    margin: 0 0.25rem;
+.footer-line {
+  font-size: 14px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.footer-subline {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #94a3b8;
+}
+
+.footer-tagline {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.footer-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #0ea5e9;
+  text-decoration: underline;
+}
+
+.heart {
+  color: #ef4444;
 }
 
 /* Responsive Design */
