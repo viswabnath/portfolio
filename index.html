@@ -20,8 +20,8 @@
   <meta name="description"
     content="Senior Frontend Engineer with 9+ years experience. Co-Founder of Onemark Digital Agency. Angular expert, blockchain pioneer, clinical tech specialist.">
   <meta name="keywords"
-    content="Senior Frontend Engineer, Angular Expert, Blockchain Developer, CTO, Onemark, Full-Stack Developer, Clinical Technology">
-  <meta property="og:title" content="Viswanath Bodasakurthi — Senior Frontend Engineer & CTO">
+    content="Senior Frontend Engineer, Angular Expert, Blockchain Developer, Co-Founder, Onemark, Full-Stack Developer, Clinical Technology">
+  <meta property="og:title" content="Viswanath Bodasakurthi — Senior Frontend Engineer & Co-Founder">
   <meta property="og:description"
     content="9 years of engineering craft. Co-Founder of Onemark Digital Agency. Clinical tech, blockchain, UI architecture.">
   <meta property="og:type" content="website">
@@ -31,7 +31,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Viswanath Bodasakurthi",
-    "jobTitle": "Senior Frontend Engineer & CTO",
+    "jobTitle": "Senior Frontend Engineer & Co-Founder OneMark",
     "email": "viswanathbodasakurthi@gmail.com",
     "url": "https://viswabnath.github.io",
     "sameAs": [
@@ -48,7 +48,7 @@
 ═══════════════════════════════════════════════════════════ */
     :root {
       --bg: #07070e;
-      --surf:    rgba(4, 4, 10, 0.0);
+      --surf: rgba(4, 4, 10, 0.0);
       --white: #ffffff;
       --cream: #ede8df;
       --body: #a8b5c2;
@@ -84,6 +84,17 @@
       overflow-x: hidden;
     }
 
+    html,
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    * {
+      max-width: 100vw;
+    }
+
     a {
       text-decoration: none;
       color: inherit;
@@ -91,16 +102,34 @@
     }
 
     /* ── Global text legibility across all aurora color backgrounds ── */
-    .sec-label, .hero-role, .hs-l, .ti,
-    .tl-stack span, .proj-stack span, .cloud-grid span,
-    .tl-period, .proj-badge, .tl-meta h4, .nav-link,
-    .soc-card span, .skill-meta span {
-      text-shadow: 0 1px 6px rgba(0,0,0,0.75);
+    .sec-label,
+    .hero-role,
+    .hs-l,
+    .ti,
+    .tl-stack span,
+    .proj-stack span,
+    .cloud-grid span,
+    .tl-period,
+    .proj-badge,
+    .tl-meta h4,
+    .nav-link,
+    .soc-card span,
+    .skill-meta span {
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.75);
     }
-    .tl-summary, .about-intro, .tl-achievements li,
-    .ex-card p, .proj-card p, .ci-item span, .ci-item a,
-    .sec-h2, .hero-name, .tl-meta h3, .proj-card p {
-      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+
+    .tl-summary,
+    .about-intro,
+    .tl-achievements li,
+    .ex-card p,
+    .proj-card p,
+    .ci-item span,
+    .ci-item a,
+    .sec-h2,
+    .hero-name,
+    .tl-meta h3,
+    .proj-card p {
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     }
 
     em {
@@ -136,6 +165,47 @@
       border: 1.5px solid rgba(255, 255, 255, 0.28);
       pointer-events: none;
     }
+
+    /* 2. Back To Top Button Styles */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--gold);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 900;
+      /* Below mobile menu (999), above content */
+      box-shadow: 0 4px 15px rgba(201, 169, 110, 0.4);
+      border: none;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--gold-l);
+      transform: translateY(-3px);
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
 
     @media (hover: none) {
 
@@ -918,7 +988,7 @@
       font-size: .58rem;
       letter-spacing: .04em;
       color: #b0bbc8;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       padding: .16rem .55rem;
       border-radius: 2px;
     }
@@ -1032,7 +1102,7 @@
       font-size: .58rem;
       letter-spacing: .04em;
       color: #b0bbc8;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       padding: .15rem .52rem;
       border-radius: 2px;
     }
@@ -1099,13 +1169,16 @@
       font-size: .6rem;
       letter-spacing: .04em;
       color: #b0bbc8;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       padding: .22rem .62rem;
       border-radius: 2px;
       transition: color .18s, border-color .18s;
     }
 
-    .cloud-grid span:hover { color: #ffffff; border-color: rgba(255,255,255,0.4); }
+    .cloud-grid span:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
 
     /* CONTACT */
     .contact-grid {
@@ -1208,7 +1281,8 @@
       font-size: .58rem;
       letter-spacing: .1em;
       text-transform: uppercase;
-    color: #a0acba; }
+      color: #a0acba;
+    }
 
     .soc-card.github:hover {
       border-color: #555;
@@ -1277,7 +1351,10 @@
       color: var(--gold-l);
     }
 
-    .footer-sub { margin-top: .5rem; color: #6b7585; }
+    .footer-sub {
+      margin-top: .5rem;
+      color: #6b7585;
+    }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
@@ -1312,6 +1389,9 @@
     @media (max-width: 768px) {
       .hamburger {
         display: flex;
+        position: relative;
+        z-index: 1001;
+        /* Higher than nav-menu */
       }
 
       .nav-menu {
@@ -1320,29 +1400,50 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(4, 4, 10, 0.92);
-        backdrop-filter: blur(24px);
-        backdrop-filter: blur(20px);
+        /* Make background solid (not transparent) to prevent overlapping visual */
+        background: #07070e;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2.5rem;
-        z-index: 999;
+        z-index: 1000;
+        /* Covers everything else */
         transform: translateX(100%);
         transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+        /* Ensure padding doesn't break layout */
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
       }
 
       .nav-menu.open {
         transform: translateX(0);
       }
 
-      .nav-link {
-        font-size: .85rem;
-        letter-spacing: .2em;
+      /* Fix the Terminal Width on Mobile */
+      .term-window {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 2rem;
       }
 
+      /* Prevent horizontal overflow on Hero Grid */
+      .hero-grid {
+        padding: 6rem 1.5rem 3rem 1.5rem;
+        /* Adjust padding */
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        /* Clip overflow */
+      }
+
+      /* Adjust Hero Name size to prevent text overflow */
       .hero-name {
-        font-size: clamp(3rem, 15vw, 5.5rem);
+        font-size: clamp(2.5rem, 12vw, 4rem);
+        word-break: break-word;
+        /* Wrap long words if needed */
       }
 
       .hs {
@@ -1516,7 +1617,8 @@
         As a senior frontend engineer, I specialize in Angular and React, with a strong background in building complex,
         high-stakes applications. My expertise extends to blockchain technologies, where I've developed smart contracts
         and decentralized applications for real-world supply chain solutions. I founded Onemark Digital Agency in
-        2017, successfully delivering over 50 projects across various industries. I excel in leading cross-functional teams,
+        2017, successfully delivering over 50 projects across various industries. I excel in leading cross-functional
+        teams,
         mentoring junior developers, and driving technical excellence in every project I undertake.
         I've built software that runs where it matters most — clinical trials, banking infrastructure, blockchain supply
         chains.
@@ -1647,30 +1749,6 @@
           </div>
         </div>
 
-        <!-- <div class="tl-item fade-up" data-color="#fb923c">
-          <div class="tl-left">
-            <span class="tl-no">04</span>
-            <div class="tl-line"></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-meta">
-              <h3>CTO &amp; Co-Founder</h3>
-              <h4>Onemark Digital Agency</h4>
-              <span class="tl-period">2017 – Present</span>
-            </div>
-            <p class="tl-summary">Founded and scaled a full-service digital agency providing comprehensive digital solutions.</p>
-            <ul class="tl-achievements">
-              <li>Built team serving 100+ clients across various industries</li>
-              <li>Increased client revenue by 30–200% through targeted digital strategy</li>
-              <li>Developed 50+ websites with deep focus on user experience and conversion</li>
-              <li>Established partnerships with educational institutions and enterprise clients</li>
-            </ul>
-            <div class="tl-stack">
-              <span>Digital Marketing</span><span>Full-Stack</span><span>React</span>
-              <span>Angular</span><span>SEO</span><span>Brand Strategy</span>
-            </div>
-          </div>
-        </div> -->
 
         <div class="tl-item fade-up" data-color="#fbbf24">
           <div class="tl-left">
@@ -1751,15 +1829,16 @@
           <div class="proj-top">
             <div class="proj-icon" style="--ic:#c9a96e"><i class="fas fa-globe"></i></div>
             <div class="proj-links">
-              <a href="https://onemark.co.in/" target="_blank" aria-label="Live"><i
+              <a href="https://stories.onemark.co.in/" target="_blank" aria-label="Live"><i
                   class="fas fa-external-link-alt"></i></a>
             </div>
           </div>
-          <h3>Onemark Digital Agency</h3>
-          <p>Didn't just build the product — built the company. 100+ clients. Growing. All while holding a senior
-            engineering role. Proof that CTO isn't a title, it's a habit.</p>
+          <h3>Stories By Onemark</h3>
+          <p>The production-grade portfolio and lead-generation site for OneMark Stories — the visual arts & interactive
+            event branch of OneMark Digital. We craft bespoke digital experiences for weddings, entertainment launches,
+            corporate galas, and life's most unforgettable milestones.</p>
           <div class="proj-stack">
-            <span>Full-Stack</span><span>Digital Marketing</span><span>Branding</span><span>SEO</span>
+            <span>Next.js</span><span>Tailwind CSS</span><span>GSAP</span><span>Three.js</span>
           </div>
         </div>
 
@@ -1813,9 +1892,15 @@
       <div class="skills-layout">
         <div class="skills-bars fade-up">
           <div class="skill-row">
-            <div class="skill-meta"><span>Angular</span><span>98%</span></div>
+            <div class="skill-meta"><span>HTML / CSS</span><span>98%</span></div>
             <div class="skill-track">
               <div class="skill-fill" data-w="98%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span>Angular</span><span>95%</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="95%"></div>
             </div>
           </div>
           <div class="skill-row">
@@ -1831,15 +1916,15 @@
             </div>
           </div>
           <div class="skill-row">
-            <div class="skill-meta"><span>Node.js / Express</span><span>85%</span></div>
+            <div class="skill-meta"><span>Node.js / Express</span><span>78%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" data-w="85%"></div>
+              <div class="skill-fill" data-w="78%"></div>
             </div>
           </div>
           <div class="skill-row">
-            <div class="skill-meta"><span>Spring Boot / Java</span><span>78%</span></div>
+            <div class="skill-meta"><span>Next.js </span><span>85%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" data-w="78%"></div>
+              <div class="skill-fill" data-w="85%"></div>
             </div>
           </div>
           <div class="skill-row">
@@ -1896,7 +1981,7 @@
         <div class="contact-info fade-up">
           <div class="ci-item">
             <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-          <div>
+            <div>
               <h4>Email</h4>
               <a href="mailto:viswanathbodasakurthi@gmail.com">viswanathbodasakurthi@gmail.com</a>
             </div>
@@ -1940,7 +2025,7 @@
           <a href="https://www.instagram.com/viswabnath/" target="_blank" class="soc-card instagram">
             <i class="fab fa-instagram"></i><span>Instagram</span>
           </a>
-          <a href="https://www.behance.net/onemark-design" target="_blank" class="soc-card onemark">
+          <a href="https://www.behance.net/onemark-digital" target="_blank" class="soc-card onemark">
             <i class="fab fa-behance"></i><span>behance</span>
           </a>
         </div>
@@ -1957,6 +2042,10 @@
       <p class="footer-sub">Three.js · GSAP · Lenis · Vanilla JS · No frameworks harmed in the making.</p>
     </div>
   </footer>
+
+   <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <!-- SCRIPTS -->
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -2149,14 +2238,37 @@
 
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+    const body = document.body;
+
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       navMenu.classList.toggle('open');
+      // Toggle body scroll lock
+      body.classList.toggle('menu-open');
     });
-    navMenu.querySelectorAll('.nav-link').forEach(l => {
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(l => {
       l.addEventListener('click', () => {
         hamburger.classList.remove('open');
         navMenu.classList.remove('open');
+        body.classList.remove('menu-open');
+      });
+    });
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) { // Show after scrolling down 500px
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
       });
     });
 
@@ -2205,7 +2317,7 @@
       { text: '  "role": "Senior Frontend Engineer",', color: '#67e8f9', delay: 80 },
       { text: '  "experience": "' + (() => { const s = new Date(2017, 8, 1), n = new Date(); let y = n.getFullYear() - s.getFullYear(); if (n.getMonth() < 8) y--; return y; })() + '+ years",', color: '#67e8f9', delay: 80 },
       { text: '  "specialty": "Angular + Blockchain",', color: '#67e8f9', delay: 80 },
-      { text: '  "cto": "Onemark Digital Agency",', color: '#c084fc', delay: 80 },
+      { text: '  "cofounder": "Onemark Digital Agency",', color: '#c084fc', delay: 80 },
       { text: '  "status": "available"', color: '#4ade80', delay: 80 },
       { text: '}', color: '#e2e8f0', delay: 200 },
       { text: '', color: '', delay: 300 },

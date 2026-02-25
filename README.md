@@ -10,7 +10,7 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](#license)
 
   <p align="center">
-    <strong>Senior Frontend Engineer & CTO</strong> | 8+ years of experience engineering clinical tech, banking infrastructure, and blockchain systems.
+    <strong>Senior Frontend Engineer & Co-Founder</strong> | 8+ years of experience engineering clinical tech, banking infrastructure, and blockchain systems.
   </p>
   
 
