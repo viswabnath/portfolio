@@ -18,12 +18,12 @@
 
   <!-- SEO -->
   <meta name="description"
-    content="Senior Frontend Engineer with 9+ years experience. Co-Founder of Onemark Digital Agency. Angular expert, blockchain pioneer, clinical tech specialist.">
+    content="Senior Frontend Engineer with 9+ years experience. Co-Founder of Onemark Digital . Angular expert, blockchain pioneer, clinical tech specialist.">
   <meta name="keywords"
     content="Senior Frontend Engineer, Angular Expert, Blockchain Developer, Co-Founder, Onemark, Full-Stack Developer, Clinical Technology">
   <meta property="og:title" content="Viswanath Bodasakurthi — Senior Frontend Engineer & Co-Founder">
   <meta property="og:description"
-    content="9 years of engineering craft. Co-Founder of Onemark Digital Agency. Clinical tech, blockchain, UI architecture.">
+    content="9 years of engineering craft. Co-Founder of Onemark Digital . Clinical tech, blockchain, UI architecture.">
   <meta property="og:type" content="website">
 
   <script type="application/ld+json">
@@ -47,20 +47,20 @@
    TOKENS
 ═══════════════════════════════════════════════════════════ */
     :root {
-      --bg: #07070e;
-      --surf: rgba(4, 4, 10, 0.0);
-      --white: #ffffff;
-      --cream: #ede8df;
-      --body: #a8b5c2;
-      --muted: #8a94a8;
-      --dim: #2a2f45;
-      --gold: #c9a96e;
-      --gold-l: #e0bf8a;
-      --rule: rgba(255, 255, 255, 0.07);
-      --font-d: 'Cormorant Garamond', serif;
-      --font-b: 'Outfit', sans-serif;
-      --font-m: 'JetBrains Mono', monospace;
-    }
+  --bg: #07070e;
+  --surf: rgba(4, 4, 10, 0.0);
+  --white: #ffffff;
+  --cream: #ede8df;
+  --body: #e2e8f0;    /* Brightened from #a8b5c2 */
+  --muted: #cbd5e1;   /* Brightened from #8a94a8 */
+  --dim: #334155;     /* Brightened from #2a2f45 */
+  --gold: #c9a96e;
+  --gold-l: #e0bf8a;
+  --rule: rgba(255, 255, 255, 0.07);
+  --font-d: 'Cormorant Garamond', serif;
+  --font-b: 'Outfit', sans-serif;
+  --font-m: 'JetBrains Mono', monospace;
+}
 
     *,
     *::before,
@@ -1543,7 +1543,7 @@
           </div>
           <div class="hs">
             <span class="hs-v">1</span>
-            <span class="hs-l">Agency built<br>from scratch</span>
+            <span class="hs-l">Digital Agency built<br>from scratch</span>
           </div>
           <div class="hs hs-accent">
             <span class="hs-v">50+</span>
@@ -1600,7 +1600,7 @@
       <span class="ti">Microservices Architecture<span class="ts">◆</span></span>
       <span class="ti">Blockchain Pioneer<span class="ts">◆</span></span>
       <span class="ti">Hybrid Mobile Apps<span class="ts">◆</span></span>
-      <span class="ti">Onemark Agency<span class="ts">◆</span></span>
+      <span class="ti">Onemark Digitial<span class="ts">◆</span></span>
       <span class="ti">WebGL Experiences<span class="ts">◆</span></span>
 
     </div>
@@ -1612,11 +1612,11 @@
       <div class="sec-label">About Me</div>
       <h2 class="sec-h2 reveal-h">I don't just write code.<br><em>I craft the feeling of the web.</em></h2>
       <p class="about-intro fade-up">
-        Senior Frontend Engineer with 9+ years of professional experience in full-stack development and
+        Senior Frontend Engineer with <span id="about-exp-years">8</span>+ years ofprofessional experience in full-stack development and
         entrepreneurship.
         As a senior frontend engineer, I specialize in Angular and React, with a strong background in building complex,
         high-stakes applications. My expertise extends to blockchain technologies, where I've developed smart contracts
-        and decentralized applications for real-world supply chain solutions. I founded Onemark Digital Agency in
+        and decentralized applications for real-world supply chain solutions. I've Co founded Onemark Digital in
         2017, successfully delivering over 50 projects across various industries. I excel in leading cross-functional
         teams,
         mentoring junior developers, and driving technical excellence in every project I undertake.
@@ -1640,7 +1640,7 @@
         <div class="ex-card fade-up">
           <div class="ex-icon"><i class="fas fa-rocket"></i></div>
           <h4>Entrepreneurship</h4>
-          <p>Founded and scaled Onemark Digital Agency, serving 100+ clients across various industries since 2017.</p>
+          <p>Co Founded and scaled Onemark Digital, served 100+ clients across various industries since 2017.</p>
         </div>
         <div class="ex-card fade-up">
           <div class="ex-icon"><i class="fas fa-users"></i></div>
@@ -2306,17 +2306,41 @@
     gsap.to('#ticker-track', { x: '-50%', ease: 'none', duration: 22, repeat: -1 });
 
     /* ═══════════════════════════════════════════════════════
-       HERO ENTRANCE
+       HERO ENTRANCE & MAC DOS TERMINAL EFFECT
     ═══════════════════════════════════════════════════════ */
+    // 1. Identity Text Animation (Kept mostly the same, removed terminal from this timeline)
     gsap.timeline({ delay: .15 })
       .from('.hero-kicker', { opacity: 0, y: 14, duration: .7, ease: 'power3.out' })
       .from('.name-row-1', { opacity: 0, y: 40, duration: .9, ease: 'expo.out' }, '-=.3')
       .from('.name-row-2', { opacity: 0, y: 40, duration: .9, ease: 'expo.out' }, '-=.6')
       .from('.hero-role', { opacity: 0, y: 18, duration: .7, ease: 'power3.out' }, '-=.5')
       .from('.hero-stats .hs', { opacity: 0, y: 16, stagger: .1, duration: .65, ease: 'power3.out' }, '-=.5')
-      .from('.hero-socials', { opacity: 0, duration: .7 }, '-=.3')
-      .from('#hero-terminal', { opacity: 0, x: 40, duration: 1.0, ease: 'power3.out' }, .2);
+      .from('.hero-socials', { opacity: 0, duration: .7 }, '-=.3');
 
+    // 2. The "Mac DOS" CRT/3D Terminal Boot Sequence
+    gsap.set('#hero-terminal', { perspective: 1000 });
+    gsap.set('.term-window', { transformOrigin: "50% 50%", opacity: 0, rotationX: 35, scaleY: 0.01, scaleX: 0.3 });
+
+    const termBoot = gsap.timeline({ delay: 0.7 }); // Starts right as text finishes
+    termBoot.to('.term-window', { opacity: 1, scaleX: 1, duration: 0.2, ease: "power2.inOut" }) // Horizontal beam
+            .to('.term-window', { scaleY: 1, rotationX: 0, duration: 0.8, ease: "elastic.out(1, 0.6)" }) // Snap open with bounce
+            .fromTo('.term-window', 
+              { boxShadow: "0 0 80px rgba(201, 169, 110, 0.8)" }, 
+              { boxShadow: "0 24px 60px rgba(0, 0, 0, .5), 0 0 40px rgba(201, 169, 110, .05)", duration: 0.6 }, "-=0.6");
+
+    // 3. Desktop MatchMedia for heavy parallax (Lazy Loading / Efficiency!)
+    let mm = gsap.matchMedia();
+    mm.add("(min-width: 769px)", () => {
+      // Moves the text and terminal at different speeds when scrolling down
+      gsap.to('.hero-identity', { 
+        yPercent: 20, 
+        scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 } 
+      });
+      gsap.to('#hero-terminal', { 
+        yPercent: -10, // Moves slightly up while text moves down
+        scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 } 
+      });
+    });
     /* ═══════════════════════════════════════════════════════
        TERMINAL TYPING
     ═══════════════════════════════════════════════════════ */
@@ -2330,7 +2354,7 @@
       { text: '$ cat career.json', color: '#c9a96e', delay: 600 },
       { text: '{', color: '#e2e8f0', delay: 100 },
       { text: '  "role": "Senior Frontend Engineer",', color: '#67e8f9', delay: 80 },
-      { text: '  "experience": "' + (() => { const s = new Date(2017, 8, 1), n = new Date(); let y = n.getFullYear() - s.getFullYear(); if (n.getMonth() < 8) y--; return y; })() + '+ years",', color: '#67e8f9', delay: 80 },
+      { text: '  "experience": "' + (() => { const s = new Date(2017, 10, 1), n = new Date(); let y = n.getFullYear() - s.getFullYear(); if (n.getMonth() < 10) y--; return y; })() + '+ years",', color: '#67e8f9', delay: 80 },
       { text: '  "specialty": "Angular + Blockchain",', color: '#67e8f9', delay: 80 },
       { text: '  "cofounder": "Onemark Digital Agency",', color: '#c084fc', delay: 80 },
       { text: '  "status": "available"', color: '#4ade80', delay: 80 },
@@ -2380,19 +2404,30 @@
     }
 
     setTimeout(typeNextLine, 1200);
+    
+/* ═══════════════════════════════════════════════════════
+   DYNAMIC EXPERIENCE YEARS (since Nov 2017)
+═══════════════════════════════════════════════════════ */
+(function updateExpYears() {
+  const start = new Date(2017, 10, 1); // November is month 10 (0-indexed)
+  const now = new Date();
+  
+  let years = now.getFullYear() - start.getFullYear();
+  const monthDiff = now.getMonth() - start.getMonth();
+  
+  // If we haven't hit November yet this year, subtract 1
+  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < 1)) {
+    years--;
+  }
+  
+  // Update Hero Section
+  const heroExpEl = document.getElementById('exp-years');
+  if (heroExpEl) heroExpEl.textContent = years;
 
-    /* ═══════════════════════════════════════════════════════
-       DYNAMIC EXPERIENCE YEARS (since Sep 2017)
-    ═══════════════════════════════════════════════════════ */
-    (function updateExpYears() {
-      const start = new Date(2017, 8, 1); // September 2017 (month is 0-indexed)
-      const now = new Date();
-      let years = now.getFullYear() - start.getFullYear();
-      const monthDiff = now.getMonth() - start.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < 1)) years--;
-      const el = document.getElementById('exp-years');
-      if (el) el.textContent = years + '+';
-    })();
+  // Update About Section
+  const aboutExpEl = document.getElementById('about-exp-years');
+  if (aboutExpEl) aboutExpEl.textContent = years;
+})();
 
     // Isolate terminal wheel events so inner scroll works without triggering page scroll
     const termBody = document.querySelector('.term-body');
@@ -2458,23 +2493,32 @@
       );
     });
 
-    // Project cards
+   // Project cards - 3D Flip with Reverse Toggle
     document.querySelectorAll('.proj-card').forEach(card => {
       gsap.fromTo(card,
-        { opacity: 0, y: 36 },
+        { opacity: 0, y: 60, rotationX: -15, transformOrigin: "50% 100%" }, // Start rotated back
         {
-          opacity: 1, y: 0, duration: .8, ease: 'power3.out',
-          scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' }
+          opacity: 1, y: 0, rotationX: 0, duration: 0.9, ease: 'back.out(1.2)', // Bouncy landing
+          scrollTrigger: { 
+            trigger: card, 
+            start: 'top 85%', 
+            // play (scroll down), none (past), none (scroll back up past), reverse (scroll back above)
+            toggleActions: 'play none none reverse' 
+          }
         }
       );
     });
 
-    // Expertise cards stagger - use fromTo so cards visible by default
+   // Expertise cards stagger - Elastic Entry
     gsap.fromTo('.ex-card',
-      { opacity: 0, y: 40 },
+      { opacity: 0, y: 50, scale: 0.95 },
       {
-        opacity: 1, y: 0, stagger: .1, duration: .8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.expertise-grid', start: 'top 82%', toggleActions: 'play none none none' }
+        opacity: 1, y: 0, scale: 1, stagger: 0.1, duration: 1, ease: 'elastic.out(1, 0.75)',
+        scrollTrigger: { 
+          trigger: '.expertise-grid', 
+          start: 'top 82%', 
+          toggleActions: 'play none none reverse' 
+        }
       }
     );
 
