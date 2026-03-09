@@ -47,20 +47,23 @@
    TOKENS
 ═══════════════════════════════════════════════════════════ */
     :root {
-  --bg: #07070e;
-  --surf: rgba(4, 4, 10, 0.0);
-  --white: #ffffff;
-  --cream: #ede8df;
-  --body: #e2e8f0;    /* Brightened from #a8b5c2 */
-  --muted: #cbd5e1;   /* Brightened from #8a94a8 */
-  --dim: #334155;     /* Brightened from #2a2f45 */
-  --gold: #c9a96e;
-  --gold-l: #e0bf8a;
-  --rule: rgba(255, 255, 255, 0.07);
-  --font-d: 'Cormorant Garamond', serif;
-  --font-b: 'Outfit', sans-serif;
-  --font-m: 'JetBrains Mono', monospace;
-}
+      --bg: #07070e;
+      --surf: rgba(4, 4, 10, 0.0);
+      --white: #ffffff;
+      --cream: #ede8df;
+      --body: #e2e8f0;
+      /* Brightened from #a8b5c2 */
+      --muted: #cbd5e1;
+      /* Brightened from #8a94a8 */
+      --dim: #334155;
+      /* Brightened from #2a2f45 */
+      --gold: #c9a96e;
+      --gold-l: #e0bf8a;
+      --rule: rgba(255, 255, 255, 0.07);
+      --font-d: 'Cormorant Garamond', serif;
+      --font-b: 'Outfit', sans-serif;
+      --font-m: 'JetBrains Mono', monospace;
+    }
 
     *,
     *::before,
@@ -1612,7 +1615,8 @@
       <div class="sec-label">About Me</div>
       <h2 class="sec-h2 reveal-h">I don't just write code.<br><em>I craft the feeling of the web.</em></h2>
       <p class="about-intro fade-up">
-        Senior Frontend Engineer with <span id="about-exp-years">8</span>+ years ofprofessional experience in full-stack development and
+        Senior Frontend Engineer with <span id="about-exp-years">8</span>+ years ofprofessional experience in full-stack
+        development and
         entrepreneurship.
         As a senior frontend engineer, I specialize in Angular and React, with a strong background in building complex,
         high-stakes applications. My expertise extends to blockchain technologies, where I've developed smart contracts
@@ -1786,6 +1790,62 @@
       <div class="sec-label">Selected Projects</div>
       <h2 class="sec-h2 reveal-h">Things I've<br><em>actually shipped.</em></h2>
       <div class="projects-grid">
+
+        <div class="proj-card">
+          <div class="proj-top">
+            <div class="proj-icon" style="--ic:#fb7185"><i class="fas fa-brain"></i></div>
+            <div class="proj-links">
+              <a href="https://github.com/viswabnath/whatsapp-reminder-bot" target="_blank" aria-label="GitHub"><i
+                  class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <h3>Manvi — AI-Powered WhatsApp "Second Brain"</h3>
+          <p>Manvi is a fully agentic AI assistant that lives inside WhatsApp. Built with a dual-brain architecture —
+            Google Gemini 2.0 Flash as the primary engine and OpenRouter as a seamless fallback — it understands natural
+            language to set reminders, manage daily routines, save birthdays, and forward messages. Integrated live web
+            search via Tavily and Serper keeps it connected to real-time information. A double-lock alert system fires
+            advance warnings and day-of celebratory alerts for special events. All API quotas are tracked in real time
+            with autonomous low-credit alerts, accessible via a /limit dashboard. Built on Node.js, Express, Supabase,
+            and deployed on Render.</p>
+          <div class="proj-stack">
+            <span>Node.js</span><span>Express</span><span>Gemini
+              AI</span><span>Supabase</span><span>OpenRouter</span><span>Tavily</span><span>node-cron</span>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-top">
+            <div class="proj-icon" style="--ic:#c9a96e"><i class="fas fa-globe"></i></div>
+            <div class="proj-links">
+              <a href="https://stories.onemark.co.in/" target="_blank" aria-label="Live"><i
+                  class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3>Stories By Onemark</h3>
+          <p>The production-grade portfolio and lead-generation site for OneMark Stories — the visual arts & interactive
+            event branch of OneMark Digital. We craft bespoke digital experiences for weddings, entertainment launches,
+            corporate galas, and life's most unforgettable milestones.</p>
+          <div class="proj-stack">
+            <span>Next.js</span><span>Tailwind CSS</span><span>GSAP</span><span>Three.js</span>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-top">
+            <div class="proj-icon" style="--ic:#c9a96e"><i class="fas fa-globe"></i></div>
+            <div class="proj-links">
+              <a href="https://internal.onemark.co.in/" target="_blank" aria-label="Live"><i
+                  class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3>Onemark Internal</h3>
+          <p>A secure, modern React and Vite web application built for OneMark to efficiently generate and manage
+            financial documents like invoices and payslips.</p>
+          <div class="proj-stack">
+            <span>Vite</span><span>React</span><span>Invoice Generator</span><span>Payslip Generator</span>
+          </div>
+        </div>
+
         <div class="proj-card">
           <div class="proj-top">
             <div class="proj-icon" style="--ic:#f59e0b"><i class="fas fa-chart-line"></i></div>
@@ -1822,38 +1882,6 @@
             chains. Built before everyone started putting blockchain on their CV.</p>
           <div class="proj-stack">
             <span>Multichain</span><span>Angular</span><span>Ionic</span><span>Smart Contracts</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <div class="proj-icon" style="--ic:#c9a96e"><i class="fas fa-globe"></i></div>
-            <div class="proj-links">
-              <a href="https://stories.onemark.co.in/" target="_blank" aria-label="Live"><i
-                  class="fas fa-external-link-alt"></i></a>
-            </div>
-          </div>
-          <h3>Stories By Onemark</h3>
-          <p>The production-grade portfolio and lead-generation site for OneMark Stories — the visual arts & interactive
-            event branch of OneMark Digital. We craft bespoke digital experiences for weddings, entertainment launches,
-            corporate galas, and life's most unforgettable milestones.</p>
-          <div class="proj-stack">
-            <span>Next.js</span><span>Tailwind CSS</span><span>GSAP</span><span>Three.js</span>
-          </div>
-        </div>
-
-         <div class="proj-card">
-          <div class="proj-top">
-            <div class="proj-icon" style="--ic:#c9a96e"><i class="fas fa-globe"></i></div>
-            <div class="proj-links">
-              <a href="https://internal.onemark.co.in/" target="_blank" aria-label="Live"><i
-                  class="fas fa-external-link-alt"></i></a>
-            </div>
-          </div>
-          <h3>Onemark Internal</h3>
-          <p>A secure, modern React and Vite web application built for OneMark to efficiently generate and manage financial documents like invoices and payslips.</p>
-          <div class="proj-stack">
-            <span>Vite</span><span>React</span><span>Invoice Generator</span><span>Payslip Generator</span>
           </div>
         </div>
 
@@ -1895,20 +1923,7 @@
           </div>
         </div> -->
 
-         <div class="proj-card">
-          <div class="proj-top">
-            <div class="proj-icon" style="--ic:#fb7185"><i class="fas fa-brain"></i></div>
-            <div class="proj-links">
-              <a href="https://github.com/viswabnath/whatsapp-reminder-bot" target="_blank" aria-label="GitHub"><i
-                  class="fab fa-github"></i></a>
-            </div>
-          </div>
-          <h3>Manvi — AI-Powered WhatsApp "Second Brain"</h3>
-          <p>A secure, conversational AI assistant that lives directly inside WhatsApp. Built with Node.js, PostgreSQL, and Google's Gemini API, Manvi completely eliminates the friction of traditional task managers by allowing users to schedule reminders, manage routines, and dispatch messages using messy, natural language.</p>
-          <div class="proj-stack">
-            <span>Node.js</span><span>PostgreSQL</span><span>Gemini API</span><span>Supabase</span>
-          </div>
-        </div>
+
 
       </div>
     </div>
@@ -2073,7 +2088,7 @@
     </div>
   </footer>
 
-   <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -2338,22 +2353,22 @@
 
     const termBoot = gsap.timeline({ delay: 0.7 }); // Starts right as text finishes
     termBoot.to('.term-window', { opacity: 1, scaleX: 1, duration: 0.2, ease: "power2.inOut" }) // Horizontal beam
-            .to('.term-window', { scaleY: 1, rotationX: 0, duration: 0.8, ease: "elastic.out(1, 0.6)" }) // Snap open with bounce
-            .fromTo('.term-window', 
-              { boxShadow: "0 0 80px rgba(201, 169, 110, 0.8)" }, 
-              { boxShadow: "0 24px 60px rgba(0, 0, 0, .5), 0 0 40px rgba(201, 169, 110, .05)", duration: 0.6 }, "-=0.6");
+      .to('.term-window', { scaleY: 1, rotationX: 0, duration: 0.8, ease: "elastic.out(1, 0.6)" }) // Snap open with bounce
+      .fromTo('.term-window',
+        { boxShadow: "0 0 80px rgba(201, 169, 110, 0.8)" },
+        { boxShadow: "0 24px 60px rgba(0, 0, 0, .5), 0 0 40px rgba(201, 169, 110, .05)", duration: 0.6 }, "-=0.6");
 
     // 3. Desktop MatchMedia for heavy parallax (Lazy Loading / Efficiency!)
     let mm = gsap.matchMedia();
     mm.add("(min-width: 769px)", () => {
       // Moves the text and terminal at different speeds when scrolling down
-      gsap.to('.hero-identity', { 
-        yPercent: 20, 
-        scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 } 
+      gsap.to('.hero-identity', {
+        yPercent: 20,
+        scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 }
       });
-      gsap.to('#hero-terminal', { 
+      gsap.to('#hero-terminal', {
         yPercent: -10, // Moves slightly up while text moves down
-        scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 } 
+        scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 }
       });
     });
     /* ═══════════════════════════════════════════════════════
@@ -2419,30 +2434,30 @@
     }
 
     setTimeout(typeNextLine, 1200);
-    
-/* ═══════════════════════════════════════════════════════
-   DYNAMIC EXPERIENCE YEARS (since Nov 2017)
-═══════════════════════════════════════════════════════ */
-(function updateExpYears() {
-  const start = new Date(2017, 10, 1); // November is month 10 (0-indexed)
-  const now = new Date();
-  
-  let years = now.getFullYear() - start.getFullYear();
-  const monthDiff = now.getMonth() - start.getMonth();
-  
-  // If we haven't hit November yet this year, subtract 1
-  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < 1)) {
-    years--;
-  }
-  
-  // Update Hero Section
-  const heroExpEl = document.getElementById('exp-years');
-  if (heroExpEl) heroExpEl.textContent = years;
 
-  // Update About Section
-  const aboutExpEl = document.getElementById('about-exp-years');
-  if (aboutExpEl) aboutExpEl.textContent = years;
-})();
+    /* ═══════════════════════════════════════════════════════
+       DYNAMIC EXPERIENCE YEARS (since Nov 2017)
+    ═══════════════════════════════════════════════════════ */
+    (function updateExpYears() {
+      const start = new Date(2017, 10, 1); // November is month 10 (0-indexed)
+      const now = new Date();
+
+      let years = now.getFullYear() - start.getFullYear();
+      const monthDiff = now.getMonth() - start.getMonth();
+
+      // If we haven't hit November yet this year, subtract 1
+      if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < 1)) {
+        years--;
+      }
+
+      // Update Hero Section
+      const heroExpEl = document.getElementById('exp-years');
+      if (heroExpEl) heroExpEl.textContent = years;
+
+      // Update About Section
+      const aboutExpEl = document.getElementById('about-exp-years');
+      if (aboutExpEl) aboutExpEl.textContent = years;
+    })();
 
     // Isolate terminal wheel events so inner scroll works without triggering page scroll
     const termBody = document.querySelector('.term-body');
@@ -2508,31 +2523,31 @@
       );
     });
 
-   // Project cards - 3D Flip with Reverse Toggle
+    // Project cards - 3D Flip with Reverse Toggle
     document.querySelectorAll('.proj-card').forEach(card => {
       gsap.fromTo(card,
         { opacity: 0, y: 60, rotationX: -15, transformOrigin: "50% 100%" }, // Start rotated back
         {
           opacity: 1, y: 0, rotationX: 0, duration: 0.9, ease: 'back.out(1.2)', // Bouncy landing
-          scrollTrigger: { 
-            trigger: card, 
-            start: 'top 85%', 
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
             // play (scroll down), none (past), none (scroll back up past), reverse (scroll back above)
-            toggleActions: 'play none none reverse' 
+            toggleActions: 'play none none reverse'
           }
         }
       );
     });
 
-   // Expertise cards stagger - Elastic Entry
+    // Expertise cards stagger - Elastic Entry
     gsap.fromTo('.ex-card',
       { opacity: 0, y: 50, scale: 0.95 },
       {
         opacity: 1, y: 0, scale: 1, stagger: 0.1, duration: 1, ease: 'elastic.out(1, 0.75)',
-        scrollTrigger: { 
-          trigger: '.expertise-grid', 
-          start: 'top 82%', 
-          toggleActions: 'play none none reverse' 
+        scrollTrigger: {
+          trigger: '.expertise-grid',
+          start: 'top 82%',
+          toggleActions: 'play none none reverse'
         }
       }
     );
