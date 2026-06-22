@@ -56,28 +56,28 @@ export default function Contact() {
               <div className="ci-icon"><i className="fas fa-globe"></i></div>
               <div>
                 <h4>Agency</h4>
-                <a href="https://onemark.co.in/" target="_blank">onemark.co.in ↗</a>
+                <a href="https://onemark.co.in/" target="_blank" rel="noopener noreferrer">onemark.co.in ↗</a>
               </div>
             </div>
           </div>
 
           <div className="social-grid">
-            <a href="https://github.com/viswabnath" target="_blank" className="soc-card github">
+            <a href="https://github.com/viswabnath" target="_blank" rel="noopener noreferrer" className="soc-card github">
               <i className="fab fa-github"></i><span>GitHub</span>
             </a>
-            <a href="https://linkedin.com/in/viswabnath" target="_blank" className="soc-card linkedin">
+            <a href="https://linkedin.com/in/viswabnath" target="_blank" rel="noopener noreferrer" className="soc-card linkedin">
               <i className="fab fa-linkedin"></i><span>LinkedIn</span>
             </a>
-            <a href="https://twitter.com/viswabnath" target="_blank" className="soc-card twitter">
+            <a href="https://twitter.com/viswabnath" target="_blank" rel="noopener noreferrer" className="soc-card twitter">
               <i className="fab fa-twitter"></i><span>Twitter</span>
             </a>
-            <a href="https://codepen.io/viswabnath" target="_blank" className="soc-card codepen">
+            <a href="https://codepen.io/viswabnath" target="_blank" rel="noopener noreferrer" className="soc-card codepen">
               <i className="fab fa-codepen"></i><span>CodePen</span>
             </a>
-            <a href="https://www.instagram.com/viswabnath/" target="_blank" className="soc-card instagram">
+            <a href="https://www.instagram.com/viswabnath/" target="_blank" rel="noopener noreferrer" className="soc-card instagram">
               <i className="fab fa-instagram"></i><span>Instagram</span>
             </a>
-            <a href="https://medium.com/@viswabnath" target="_blank" className="soc-card onemark">
+            <a href="https://medium.com/@viswabnath" target="_blank" rel="noopener noreferrer" className="soc-card onemark">
               <i className="fab fa-medium"></i><span>Medium</span>
             </a>
           </div>

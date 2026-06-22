@@ -287,7 +287,7 @@ export default function Hero() {
             <span className="name-row name-row-2"><em>Bodasakurthi</em></span>
           </h1>
           <p className="hero-role">Senior Frontend Engineer &nbsp;/&nbsp; UI Architect<br />
-            Co-Founder, <a href="https://onemark.co.in/" target="_blank" className="onemark-link">Onemark</a>
+            Co-Founder, <a href="https://onemark.co.in/" target="_blank" rel="noopener noreferrer" className="onemark-link">Onemark</a>
           </p>
           <div className="hero-stats">
             <div className="hs">
@@ -308,10 +308,10 @@ export default function Hero() {
             </div>
           </div>
           <div className="hero-socials">
-            <a href="https://github.com/viswabnath" target="_blank" className="soc-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/viswabnath" target="_blank" className="soc-link" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/viswabnath" target="_blank" className="soc-link" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-            <a href="https://onemark.co.in/" target="_blank" className="soc-link" aria-label="Onemark"><i className="fas fa-globe"></i></a>
+            <a href="https://github.com/viswabnath" target="_blank" rel="noopener noreferrer" className="soc-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/viswabnath" target="_blank" rel="noopener noreferrer" className="soc-link" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/viswabnath" target="_blank" rel="noopener noreferrer" className="soc-link" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+            <a href="https://onemark.co.in/" target="_blank" rel="noopener noreferrer" className="soc-link" aria-label="Onemark"><i className="fas fa-globe"></i></a>
           </div>
           <a href="/resume.pdf" download className="resume-btn">
             <i className="fas fa-download"></i> Download Resume

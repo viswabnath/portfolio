@@ -68,7 +68,7 @@ export default async function GitHubStats() {
       <div className="gh-stats-header">
         <i className="fab fa-github gh-icon"></i>
         <span>github.com/viswabnath</span>
-        <a href="https://github.com/viswabnath" target="_blank" className="gh-link" aria-label="GitHub profile">
+        <a href="https://github.com/viswabnath" target="_blank" rel="noopener noreferrer" className="gh-link" aria-label="GitHub profile">
           <i className="fas fa-arrow-up-right-from-square"></i>
         </a>
       </div>

@@ -29,11 +29,23 @@ export default function Skills() {
         { opacity: 1, y: 0, duration: .9, ease: 'power3.out',
           scrollTrigger: { trigger: '.skills-cloud', start: 'top 85%', toggleActions: 'play none none none' } }
       )
-      gsap.fromTo('.cloud-grid span',
-        { opacity: 0, scale: .8 },
-        { opacity: 1, scale: 1, stagger: .04, duration: .45, ease: 'back.out(1.4)',
-          scrollTrigger: { trigger: '.cloud-grid', start: 'top 88%', toggleActions: 'play none none none' } }
-      )
+      const tags = gsap.utils.toArray<HTMLElement>('.cloud-grid span')
+      tags.forEach((tag) => {
+        gsap.set(tag, {
+          x: gsap.utils.random(-220, 220),
+          y: gsap.utils.random(-130, 130),
+          rotation: gsap.utils.random(-30, 30),
+          opacity: 0,
+          scale: gsap.utils.random(0.4, 0.9),
+        })
+      })
+      gsap.to(tags, {
+        x: 0, y: 0, rotation: 0, opacity: 1, scale: 1,
+        duration: 0.75,
+        ease: 'back.out(1.7)',
+        stagger: { amount: 0.7, from: 'random' },
+        scrollTrigger: { trigger: '.cloud-grid', start: 'top 85%', toggleActions: 'play none none reverse' },
+      })
     })
 
     return () => ctx.revert()

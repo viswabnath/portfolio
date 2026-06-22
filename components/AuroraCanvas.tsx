@@ -83,7 +83,9 @@ export default function AuroraCanvas() {
     const clock = new THREE.Clock()
 
     let animId: number
+    let running = true
     function tick() {
+      if (!running) return
       animId = requestAnimationFrame(tick)
       uni.u_t.value = clock.getElapsedTime()
       uni.u_scroll.value += (tgt.scroll - uni.u_scroll.value) * .03
@@ -92,6 +94,17 @@ export default function AuroraCanvas() {
       renderer.render(scene, camera)
     }
     tick()
+
+    function onVisibilityChange() {
+      if (document.hidden) {
+        running = false
+        cancelAnimationFrame(animId)
+      } else {
+        running = true
+        tick()
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
 
     function onResize() {
       renderer.setSize(innerWidth, innerHeight)
@@ -109,10 +122,12 @@ export default function AuroraCanvas() {
     window._auroraSetScroll = (v: number) => { tgt.scroll = v }
 
     return () => {
+      running = false
       cancelAnimationFrame(animId)
       renderer.dispose()
       window.removeEventListener('resize', onResize)
       window.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
     }
   }, [])
 

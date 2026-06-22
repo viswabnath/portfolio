@@ -10,20 +10,34 @@ export default function Experience() {
     gsap.registerPlugin(ScrollTrigger)
 
     const ctx = gsap.context(() => {
-      document.querySelectorAll('.tl-item').forEach((el) => {
+      document.querySelectorAll('.tl-item').forEach((el, idx) => {
         const item = el as HTMLElement
         const col = item.dataset.color || '#c9a96e'
         const line = item.querySelector('.tl-line') as HTMLElement
         const no = item.querySelector('.tl-no') as HTMLElement
+        const card = item.querySelector('.tl-card') as HTMLElement
         if (line) line.style.background = `linear-gradient(to bottom, ${col}, transparent)`
         if (no) no.style.color = col
 
+        // Line draw: scaleY 0 → 1 from top
+        if (line) gsap.set(line, { scaleY: 0, transformOrigin: 'top center' })
+
+        const fromLeft = idx % 2 === 0
+        const cardX = fromLeft ? -80 : 80
+
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: item, start: 'top 80%', toggleActions: 'play none none none' }
+          scrollTrigger: { trigger: item, start: 'top 82%', toggleActions: 'play none none reverse' }
         })
-        tl.fromTo(no, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: .6, ease: 'power3.out' })
-          .fromTo(item.querySelector('.tl-card'), { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: .8, ease: 'power3.out' }, '-=.4')
-          .fromTo(item.querySelectorAll('.tl-achievements li'), { opacity: 0, x: 20 }, { opacity: 1, x: 0, stagger: .08, duration: .5, ease: 'power3.out' }, '-=.4')
+        tl.fromTo(no,
+            { opacity: 0, x: -30, scale: 0.6 },
+            { opacity: 1, x: 0, scale: 1, duration: .65, ease: 'back.out(1.4)' })
+          .to(line ?? {}, { scaleY: 1, duration: .8, ease: 'power3.out' }, '-=.3')
+          .fromTo(card,
+            { opacity: 0, x: cardX, rotationY: fromLeft ? -6 : 6 },
+            { opacity: 1, x: 0, rotationY: 0, duration: .85, ease: 'power3.out' }, '-=.5')
+          .fromTo(item.querySelectorAll('.tl-achievements li'),
+            { opacity: 0, x: fromLeft ? -20 : 20 },
+            { opacity: 1, x: 0, stagger: .07, duration: .45, ease: 'power3.out' }, '-=.4')
       })
     })
 

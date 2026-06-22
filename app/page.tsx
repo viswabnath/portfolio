@@ -40,7 +40,7 @@ export default function Home() {
       <footer className="footer">
         <div className="footer-inner">
           <p>© {year} <strong>Viswanath Bodasakurthi</strong> &nbsp;·&nbsp;
-            <a href="https://onemark.co.in" target="_blank">Onemark</a>
+            <a href="https://onemark.co.in" target="_blank" rel="noopener noreferrer">Onemark</a>
           </p>
           <p className="footer-sub">Next.js 15 · Three.js · GSAP · TypeScript · Deployed on Vercel.</p>
         </div>

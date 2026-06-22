@@ -11,7 +11,7 @@ export default function Navbar() {
     const navbar = document.getElementById('navbar')
     if (!navbar) return
 
-    ScrollTrigger.create({
+    const scrolledTrigger = ScrollTrigger.create({
       start: '80px top',
       onEnter: () => navbar.classList.add('scrolled'),
       onLeaveBack: () => navbar.classList.remove('scrolled'),
@@ -54,6 +54,7 @@ export default function Navbar() {
     return () => {
       hamburger?.removeEventListener('click', toggleMenu)
       navLinks.forEach(l => l.removeEventListener('click', closeMenu))
+      scrolledTrigger.kill()
       sectionTriggers.forEach(t => t.kill())
     }
   }, [])

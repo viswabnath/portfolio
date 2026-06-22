@@ -21,7 +21,7 @@ export default function About() {
     gsap.registerPlugin(ScrollTrigger)
 
     const ctx = gsap.context(() => {
-      gsap.fromTo('.reveal-h',
+      gsap.fromTo('.about-section .reveal-h',
         { clipPath: 'inset(0 100% 0 0)' },
         { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'expo.inOut', stagger: 0.2,
           scrollTrigger: { trigger: '.about-section', start: 'top 84%', toggleActions: 'play none none none' } }
