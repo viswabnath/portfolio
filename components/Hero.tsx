@@ -63,10 +63,6 @@ export default function Hero() {
     // Parallax (desktop only)
     const mm = gsap.matchMedia()
     mm.add('(min-width: 769px)', () => {
-      gsap.to('.hero-identity', {
-        yPercent: 20,
-        scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 }
-      })
       gsap.to('#hero-terminal', {
         yPercent: -10,
         scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 0.5 }
@@ -126,7 +122,7 @@ export default function Hero() {
     const termContent = document.getElementById('term-content')
     const termCursor = document.getElementById('term-cursor')
     const termIndicator = document.getElementById('term-indicator')
-    const termIndicatorText = document.getElementById('term-indicator-text')
+    const termIndicatorText = document.getElementById('term-indicator')
     const termBody = document.querySelector<HTMLElement>('.term-body')
     let stopped = false
 

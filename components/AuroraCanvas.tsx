@@ -10,9 +10,12 @@ export default function AuroraCanvas() {
     const canvas = canvasRef.current
     if (!canvas) return
 
+    // Render at fixed low resolution — aurora is blurry so this is imperceptible.
+    // Cuts pixel count by ~15-20× vs a retina screen, eliminating the CPU spike.
+    const W = 640, H = 360
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: false })
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5))
-    renderer.setSize(innerWidth, innerHeight)
+    renderer.setPixelRatio(1)
+    renderer.setSize(W, H, false)  // false = don't set inline CSS, let our CSS handle sizing
 
     const scene = new THREE.Scene()
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
@@ -30,7 +33,7 @@ export default function AuroraCanvas() {
         vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
         return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);
       }
-      float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<7;i++){v+=a*noise(p);p=p*2.1+vec2(1.7,9.2);a*=.52;}return v;}
+      float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=p*2.1+vec2(1.7,9.2);a*=.52;}return v;}
 
       void main(){
         vec2 uv=gl_FragCoord.xy/u_res;
@@ -71,7 +74,7 @@ export default function AuroraCanvas() {
       u_t: { value: 0 },
       u_scroll: { value: 0 },
       u_mouse: { value: new THREE.Vector2() },
-      u_res: { value: new THREE.Vector2(innerWidth, innerHeight) },
+      u_res: { value: new THREE.Vector2(W, H) },
     }
 
     scene.add(new THREE.Mesh(
@@ -81,19 +84,23 @@ export default function AuroraCanvas() {
 
     const tgt = { scroll: 0, mx: 0, my: 0 }
     const clock = new THREE.Clock()
+    const FRAME_MS = 1000 / 24
+    let lastFrame = 0
 
     let animId: number
     let running = true
-    function tick() {
+    function tick(now: number) {
       if (!running) return
       animId = requestAnimationFrame(tick)
+      if (now - lastFrame < FRAME_MS) return
+      lastFrame = now
       uni.u_t.value = clock.getElapsedTime()
       uni.u_scroll.value += (tgt.scroll - uni.u_scroll.value) * .03
       uni.u_mouse.value.x += (tgt.mx - uni.u_mouse.value.x) * .05
       uni.u_mouse.value.y += (tgt.my - uni.u_mouse.value.y) * .05
       renderer.render(scene, camera)
     }
-    tick()
+    requestAnimationFrame(tick)
 
     function onVisibilityChange() {
       if (document.hidden) {
@@ -101,22 +108,16 @@ export default function AuroraCanvas() {
         cancelAnimationFrame(animId)
       } else {
         running = true
-        tick()
+        requestAnimationFrame(tick)
       }
     }
     document.addEventListener('visibilitychange', onVisibilityChange)
-
-    function onResize() {
-      renderer.setSize(innerWidth, innerHeight)
-      uni.u_res.value.set(innerWidth, innerHeight)
-    }
 
     function onMouseMove(e: MouseEvent) {
       tgt.mx = (e.clientX / innerWidth - .5) * 2
       tgt.my = -(e.clientY / innerHeight - .5) * 2
     }
 
-    window.addEventListener('resize', onResize)
     window.addEventListener('mousemove', onMouseMove, { passive: true })
 
     window._auroraSetScroll = (v: number) => { tgt.scroll = v }
@@ -125,7 +126,6 @@ export default function AuroraCanvas() {
       running = false
       cancelAnimationFrame(animId)
       renderer.dispose()
-      window.removeEventListener('resize', onResize)
       window.removeEventListener('mousemove', onMouseMove)
       document.removeEventListener('visibilitychange', onVisibilityChange)
     }

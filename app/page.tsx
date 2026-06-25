@@ -8,6 +8,7 @@ import Experience from '@/components/Experience'
 import Projects from '@/components/Projects'
 import GitHubStats from '@/components/GitHubStats'
 import ClaudeStats from '@/components/ClaudeStats'
+import DevPanelAnimator from '@/components/DevPanelAnimator'
 import Skills from '@/components/Skills'
 import Contact from '@/components/Contact'
 import BackToTop from '@/components/BackToTop'
@@ -30,6 +31,7 @@ export default function Home() {
             <div className="dev-panel-cl"><ClaudeStats /></div>
           </div>
         </div>
+        <DevPanelAnimator />
       </div>
       <Ticker />
       <About />

@@ -23,57 +23,67 @@ export default function Projects() {
       const n = cards.length
       const rotations = cards.map(() => gsap.utils.random(-6, 6))
 
-      // First card on top
-      cards.forEach((card, i) => {
-        gsap.set(card, {
-          zIndex: n - i,
-          y: i * 12,
-          scale: 1 - i * 0.028,
-          transformOrigin: 'center bottom',
+      const mm = gsap.matchMedia()
+
+      // Desktop: pinned deck-peel scroll
+      mm.add('(min-width: 769px)', () => {
+        cards.forEach((card, i) => {
+          gsap.set(card, {
+            zIndex: n - i,
+            y: i * 12,
+            scale: 1 - i * 0.028,
+            transformOrigin: 'center bottom',
+          })
+        })
+
+        requestAnimationFrame(() => {
+          deck.style.height = `${cards[0].offsetHeight + (n - 1) * 12}px`
+          ScrollTrigger.refresh()
+        })
+
+        const tl = gsap.timeline({ defaults: { ease: 'power2.in' } })
+
+        cards.forEach((card, i) => {
+          tl.to(card, { y: '-125%', rotation: rotations[i], opacity: 0, duration: 1 }, i)
+          for (let j = i + 1; j < n; j++) {
+            const newDepth = j - i - 1
+            tl.to(cards[j], { y: newDepth * 12, scale: 1 - newDepth * 0.028, duration: 1 }, i)
+          }
+        })
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top top',
+          end: `+=${n * 600}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.8,
+          animation: tl,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const counter = section.querySelector<HTMLElement>('.proj-counter-num')
+            if (counter) {
+              const idx = Math.min(Math.floor(self.progress * n), n - 1)
+              counter.textContent = String(idx + 1)
+            }
+          },
         })
       })
 
-      // Defer height measurement until after layout paint
-      requestAnimationFrame(() => {
-        deck.style.height = `${cards[0].offsetHeight + (n - 1) * 12}px`
-        ScrollTrigger.refresh()
-      })
-
-      // Single timeline — each card gets 1 unit of time
-      const tl = gsap.timeline({ defaults: { ease: 'power2.in' } })
-
-      cards.forEach((card, i) => {
-        // Peel this card off
-        tl.to(card, { y: '-125%', rotation: rotations[i], opacity: 0, duration: 1 }, i)
-
-        // Cards behind rise up simultaneously
-        for (let j = i + 1; j < n; j++) {
-          const newDepth = j - i - 1
-          tl.to(cards[j], {
-            y: newDepth * 12,
-            scale: 1 - newDepth * 0.028,
-            duration: 1,
-          }, i)
-        }
-      })
-
-      // One ScrollTrigger drives the whole timeline
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top top',
-        end: `+=${n * 600}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.8,
-        animation: tl,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const counter = section.querySelector<HTMLElement>('.proj-counter-num')
-          if (counter) {
-            const idx = Math.min(Math.floor(self.progress * n), n - 1)
-            counter.textContent = String(idx + 1)
-          }
-        },
+      // Mobile: simple stacked fade-in, no pin
+      mm.add('(max-width: 768px)', () => {
+        deck.style.height = 'auto'
+        cards.forEach((card, i) => {
+          gsap.set(card, { position: 'relative', zIndex: 1, y: 0, scale: 1 })
+          gsap.fromTo(card,
+            { opacity: 0, y: 32 },
+            {
+              opacity: 1, y: 0, duration: 0.65, ease: 'power3.out',
+              scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none reverse' },
+              delay: i * 0.05,
+            }
+          )
+        })
       })
     }, sectionRef)
 
@@ -137,7 +147,7 @@ export default function Projects() {
         <div className="proj-counter">
           <span className="proj-counter-num">1</span>
           <span className="proj-counter-sep">/</span>
-          <span className="proj-counter-total">6</span>
+          <span className="proj-counter-total">{projects.length}</span>
         </div>
 
         <div className="proj-scroll-cue">

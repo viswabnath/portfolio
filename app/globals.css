@@ -181,7 +181,7 @@ body.menu-open {
   }
 }
 
-/* AURORA CANVAS */
+/* AURORA CANVAS — canvas renders at 640×360, CSS stretches it to fill viewport */
 #aurora-canvas {
   position: fixed;
   inset: 0;
@@ -190,6 +190,7 @@ body.menu-open {
   height: 100vh;
   pointer-events: none;
   display: block;
+  object-fit: fill;
 }
 
 /* LAYOUT */
@@ -359,8 +360,8 @@ body.menu-open {
   display: flex;
   align-items: center;
   padding-top: 80px;
+  padding-bottom: clamp(4rem, 8vh, 6rem);
   border-bottom: 1px solid var(--rule);
-  overflow: hidden;
 }
 
 .hero-grid {
@@ -1062,6 +1063,7 @@ body.menu-open {
   background: linear-gradient(135deg, rgba(201,169,110,.45) 0%, rgba(255,255,255,.06) 40%, rgba(201,169,110,.08) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   pointer-events: none;
 }
@@ -1544,11 +1546,6 @@ body.menu-open {
 .gh-lang-fill {
   height: 100%;
   border-radius: 2px;
-  animation: langBarGrow .9s ease-out both;
-}
-
-@keyframes langBarGrow {
-  from { width: 0 !important; }
 }
 
 .gh-contrib-label {
@@ -2002,8 +1999,25 @@ body.menu-open {
     grid-template-columns: 1fr;
   }
 
+  /* Mobile: cards stack vertically instead of pinned deck */
+  .proj-deck {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    height: auto !important;
+  }
+
   .proj-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
     padding: 1.5rem;
+    transform: none !important;
+  }
+
+  .proj-counter,
+  .proj-scroll-cue {
+    display: none;
   }
 
   .tl-item {
