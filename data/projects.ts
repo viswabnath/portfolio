@@ -30,7 +30,7 @@ export const projects: Project[] = [
     description: 'Event-driven AI assistant over the Meta WhatsApp Cloud API. Waterfall NLP intent routing, IST-accurate cron scheduling, atomic dispatch guards preventing duplicate sends, per-user rate limiting, and a live observability dashboard.',
     stack: ['Node.js', 'Express', 'Supabase', 'Gemini AI', 'Meta API', 'GSAP'],
     github: 'https://github.com/viswabnath/whatsapp-reminder-bot',
-    live: 'https://manvi.onrender.com',
+    live: 'https://manvi-bot.vercel.app/',
   },
   {
     icon: 'fas fa-file-invoice-dollar',
